@@ -1,0 +1,50 @@
+/* 
+   Lasallian Club Website Styles
+   St. Joseph Catholic School - Adama
+   
+   Colors:
+   - Primary Blue: #2d56a4
+   - Light Blue: #d5ddec
+   - Dark Blue: #122241
+   
+   Fonts:
+   - Headings: "Jost", sans-serif
+   - Body: "Tajawal", sans-serif
+*/
+
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+/* Base Styles */
+:root {
+  --primary-color: #2d56a4;
+  --primary-hover: #1e3c7a;
+  --light-blue: #d5ddec;
+  --dark-blue: #122241;
+  --white: #ffffff;
+  --light-gray: #f8f9fa;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #333333;
+  --text-color: #333333;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Tajawal", sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--white);
+  overflow-x: hidden;
+}
