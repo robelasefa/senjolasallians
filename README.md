@@ -1,12 +1,12 @@
 ![Lasalle](/assets/logo-lasalle.png)
 
-# **Lasallian Club Website**
+# **SenjoLasallians**
 
 ## 🌟 Overview
 
-The **Lasallian Club Website** is a landing page designed to showcase the club’s **mission, activities, and events** while serving as a hub for awareness and engagement. It provides visitors with information on how to support and contribute to the club’s initiatives.
+**SenjoLasallians** is the official website of the Lasallian Club at **Saint Joseph Catholic School - Adama (Senjo)**. It serves as a modern, responsive landing page to showcase the club’s **mission, activities, and events**, while encouraging awareness and engagement within the school and broader community.
 
-The club is based at **Saint Joseph Catholic School - Adama**, working to **disseminate the spirit of sharing** and support **less privileged students and the local community**.
+The club is dedicated to **spreading the spirit of sharing** and providing support for **less privileged students and the local community** through meaningful charitable actions.
 
 ## 🎯 Features
 
