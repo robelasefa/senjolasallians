@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Use requestAnimationFrame for smooth animations (for performance issues I encountered)
+  // Use requestAnimationFrame for smooth animations
   const raf =
     window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -14,14 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
   initAnimatedText();
   initChatbot();
   initTestimonialSlider();
-  initBackToTop();
+  initCounters();
 
   // Set current year in footer
   document.getElementById("currentYear").textContent = new Date().getFullYear();
 
-  // Mobile menu toggle with improved accessibility
+  // Mobile menu toggle
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const nav = document.getElementById("nav-menu");
+  const body = document.body;
 
   if (mobileMenuBtn && nav) {
     mobileMenuBtn.addEventListener("click", function () {
@@ -29,6 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
       this.setAttribute("aria-expanded", !expanded);
       this.classList.toggle("active");
       nav.classList.toggle("active");
+      
+      // Prevent body scrolling when menu is open
+      if (!expanded) {
+        body.style.overflow = "hidden";
+      } else {
+        body.style.overflow = "";
+      }
     });
   }
 
@@ -40,34 +48,63 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileMenuBtn.setAttribute("aria-expanded", "false");
         mobileMenuBtn.classList.remove("active");
         nav.classList.remove("active");
+        body.style.overflow = "";
       }
     });
   });
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      nav && 
+      nav.classList.contains("active") && 
+      !nav.contains(e.target) && 
+      !mobileMenuBtn.contains(e.target)
+    ) {
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+      mobileMenuBtn.classList.remove("active");
+      nav.classList.remove("active");
+      body.style.overflow = "";
+    }
+  });
+  
+  // Handle window resize
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768 && nav && nav.classList.contains("active")) {
+      mobileMenuBtn.setAttribute("aria-expanded", "false");
+      mobileMenuBtn.classList.remove("active");
+      nav.classList.remove("active");
+      body.style.overflow = "";
+    }
+  });
 
-  // Highlight active nav link based on scroll position
+  
+
+  // Navbar highlighting based on scroll position
   function updateActiveNavLink() {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-links a");
-
-    let currentSection = "";
+    const sections = document.querySelectorAll("section[id]");
+    const scrollPosition = window.scrollY + 100;
 
     sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 100;
+      const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
       const sectionId = section.getAttribute("id");
 
       if (
-        window.scrollY >= sectionTop &&
-        window.scrollY < sectionTop + sectionHeight
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
       ) {
-        currentSection = sectionId;
-      }
-    });
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.classList.remove("active");
+        });
 
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${currentSection}`) {
-        link.classList.add("active");
+        // Add active class to current section link
+        const activeLink = document.querySelector(
+          `.nav-links a[href="#${sectionId}"]`
+        );
+        if (activeLink) {
+          activeLink.classList.add("active");
+        }
       }
     });
   }
@@ -85,30 +122,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Scroll-based animations
   function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.animate-element');
-    
+    const animatedElements = document.querySelectorAll(".animate-element");
+
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.1
+      rootMargin: "0px",
+      threshold: 0.1,
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const element = entry.target;
-          const delay = element.getAttribute('data-delay') || 0;
-          
+          const delay = element.getAttribute("data-delay") || 0;
+
           setTimeout(() => {
-            element.classList.add('visible');
+            element.classList.add("visible");
           }, delay);
-          
+
           observer.unobserve(element);
         }
       });
     }, observerOptions);
-    
-    animatedElements.forEach(element => {
+
+    animatedElements.forEach((element) => {
       observer.observe(element);
     });
   }
@@ -125,11 +162,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isTransitioning) return;
       isTransitioning = true;
 
-      // Hide all slides
       slides.forEach((slide) => slide.classList.remove("active"));
       indicators.forEach((indicator) => indicator.classList.remove("active"));
 
-      // Show the current slide
       currentSlide = (index + slides.length) % slides.length;
       slides[currentSlide].classList.add("active");
       indicators[currentSlide].classList.add("active");
@@ -137,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Reset transition lock after animation completes
       setTimeout(() => {
         isTransitioning = false;
-      }, 1500); // Match the CSS transition time
+      }, 1500);
     }
 
     function nextSlide() {
@@ -162,15 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize the carousel
     showSlide(0);
     startSlideInterval();
-
-    // Pause carousel on hover (optional)
-    const carousel = document.querySelector(".hero-carousel");
-    if (carousel) {
-      carousel.addEventListener("mouseenter", () =>
-        clearInterval(slideInterval)
-      );
-      carousel.addEventListener("mouseleave", startSlideInterval);
-    }
 
     // Preload images for smoother transitions
     function preloadImages() {
@@ -281,37 +307,40 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentTestimonial = 0;
     let isTestimonialSliding = false;
     let testimonialInterval;
-  
+
     function showTestimonial(n) {
       if (isTestimonialSliding) return;
       isTestimonialSliding = true;
-  
+
       // Hide all slides first
       testimonialSlides.forEach((slide) => {
         slide.style.display = "none";
         slide.classList.remove("active");
       });
-  
+
       testimonialDots.forEach((dot) => {
         dot.classList.remove("active");
         dot.setAttribute("aria-selected", "false");
       });
-  
+
       // Calculate the new index with proper wrapping
-      currentTestimonial = (n + testimonialSlides.length) % testimonialSlides.length;
-  
+      currentTestimonial =
+        (n + testimonialSlides.length) % testimonialSlides.length;
+
       // Show the current slide with a fade effect
       testimonialSlides[currentTestimonial].style.display = "block";
-  
-      // Small timeout to allow the display change to take effect before adding the active class
+
       setTimeout(() => {
         testimonialSlides[currentTestimonial].classList.add("active");
         testimonialDots[currentTestimonial].classList.add("active");
-        testimonialDots[currentTestimonial].setAttribute("aria-selected", "true");
+        testimonialDots[currentTestimonial].setAttribute(
+          "aria-selected",
+          "true"
+        );
         isTestimonialSliding = false;
       }, 10);
     }
-  
+
     // Set up navigation buttons
     if (prevTestimonialBtn && nextTestimonialBtn) {
       prevTestimonialBtn.addEventListener("click", () => {
@@ -319,14 +348,14 @@ document.addEventListener("DOMContentLoaded", () => {
         showTestimonial(currentTestimonial - 1);
         startAutoSlide();
       });
-      
+
       nextTestimonialBtn.addEventListener("click", () => {
         clearInterval(testimonialInterval);
         showTestimonial(currentTestimonial + 1);
         startAutoSlide();
       });
     }
-  
+
     // Set up dot navigation
     testimonialDots.forEach((dot, index) => {
       dot.addEventListener("click", () => {
@@ -334,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showTestimonial(index);
         startAutoSlide();
       });
-      
+
       dot.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -344,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-  
+
     // Auto slide functionality
     function startAutoSlide() {
       clearInterval(testimonialInterval);
@@ -352,88 +381,89 @@ document.addEventListener("DOMContentLoaded", () => {
         showTestimonial(currentTestimonial + 1);
       }, 6000);
     }
-  
+
     // Pause/resume on hover
     const testimonialSlider = document.querySelector(".testimonial-slider");
     if (testimonialSlider) {
       testimonialSlider.addEventListener("mouseenter", () => {
         clearInterval(testimonialInterval);
       });
-      
+
       testimonialSlider.addEventListener("mouseleave", () => {
         startAutoSlide();
       });
-      
+
       // Accessibility: pause on focus within
       testimonialSlider.addEventListener("focusin", () => {
         clearInterval(testimonialInterval);
       });
-      
+
       testimonialSlider.addEventListener("focusout", () => {
         startAutoSlide();
       });
     }
-  
+
     // Initialize the slider
     showTestimonial(0);
     startAutoSlide();
   }
 
-  // Animated counter for impact stats with improved performance
-  const counters = document.querySelectorAll(".counter");
-  let counterObserver;
+  // FIXED: Improved counter animation for impact stats
+  function initCounters() {
+    const counters = document.querySelectorAll(".counter");
 
-  function startCounting(entries, observer) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const counter = entry.target;
-        const target = Number.parseInt(counter.getAttribute("data-target"));
-        const duration = 2000; // ms
-        const increment = target / (duration / 16); // 60fps
-        const startTime = performance.now();
+    if (!counters.length) return;
 
-        function updateCounter(timestamp) {
-          const elapsed = timestamp - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const current = progress * target;
+    function animateCounter(counter) {
+      const target = parseInt(counter.getAttribute("data-target"), 10);
+      const duration = 2000; // ms
+      const startTime = performance.now();
+      let currentValue = 0;
 
-          counter.textContent = Math.ceil(current).toLocaleString();
+      function updateCounter(timestamp) {
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
 
-          if (progress < 1) {
-            raf(updateCounter);
-          } else {
-            counter.textContent = target.toLocaleString();
-          }
+        currentValue = Math.floor(progress * target);
+        counter.textContent = currentValue.toLocaleString();
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target.toLocaleString();
         }
-
-        raf(updateCounter);
-        observer.unobserve(counter);
       }
-    });
-  }
 
-  // Initialize counter animation when the element is in view
-  if ("IntersectionObserver" in window) {
-    counterObserver = new IntersectionObserver(startCounting, {
+      requestAnimationFrame(updateCounter);
+    }
+
+    // Use Intersection Observer to trigger counter animation when visible
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
       threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px",
-    });
+    };
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
 
     counters.forEach((counter) => {
+      // Set initial value to 0
+      counter.textContent = "0";
       counterObserver.observe(counter);
     });
-  } else {
-    // Fallback for browsers that don't support IntersectionObserver
-    counters.forEach((counter) => {
-      const target = Number.parseInt(counter.getAttribute("data-target"));
-      counter.textContent = target.toLocaleString();
-    });
   }
 
-  // Enhanced form validation
+  // FIXED: Enhanced form validation and submission
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
-    // Input validation functions (using some regex stuff)
+    // Input validation functions
     const validators = {
       name: (value) => {
         if (value.trim() === "") return "Please enter your name";
@@ -470,7 +500,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       input.addEventListener("input", function () {
         const errorElement = document.getElementById(`${this.id}-error`);
-        if (errorElement) {
+        if (errorElement && errorElement.style.display !== "none") {
           errorElement.style.display = "none";
         }
       });
@@ -497,7 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+      e.preventDefault(); // Prevent form submission
 
       // Validate all fields
       let isValid = true;
@@ -507,31 +537,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // If form is valid, submit it
+      // If form is valid, show success message
       if (isValid) {
-        // Here we would typically send the form data to a server
-        console.log("Form submitted:", {
+        // Get form data
+        const formData = {
           name: document.getElementById("name").value,
           email: document.getElementById("email").value,
           subject: document.getElementById("subject").value,
           message: document.getElementById("message").value,
-        });
+        };
 
-        // Show success message (in a real implementation,
-        // this would happen after successful AJAX)
+        console.log("Form submitted:", formData);
+
+        // Create success message
         const formContainer = contactForm.parentElement;
         const successMessage = document.createElement("div");
-        successMessage.className = "success-message";
+        successMessage.className =
+          "success-message animate-element fade-in visible";
         successMessage.innerHTML = `
-          <i class="fas fa-check-circle"></i>
-          <h3>Thank you for your message!</h3>
-          <p>We will get back to you soon.</p>
+          <div style="text-align: center; padding: 30px;">
+            <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">Thank you for your message!</h3>
+            <p style="font-size: 1.2rem;">We appreciate your interest in the Lasallian Club.</p>
+            <p>We will get back to you soon.</p>
+          </div>
         `;
-
-        // Apply styles to success message
-        successMessage.style.textAlign = "center";
-        successMessage.style.padding = "30px";
-        successMessage.style.color = "var(--primary-color)";
 
         // Replace form with success message
         formContainer.innerHTML = "";
@@ -540,7 +570,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Newsletter form submission with improved validation
+  // Newsletter form submission
   const newsletterForm = document.getElementById("newsletterForm");
   if (newsletterForm) {
     newsletterForm.addEventListener("submit", function (e) {
@@ -563,8 +593,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Show success message
       const successMessage = document.createElement("div");
+      successMessage.className = "animate-element fade-in visible";
       successMessage.innerHTML = `
-        <p style="color: var(--primary-color); font-weight: bold;">
+        <p style="color: var(--primary-color); font-weight: bold; display: flex; align-items: center; gap: 10px;">
           <i class="fas fa-check-circle"></i> Thank you for subscribing to our newsletter!
         </p>
       `;
@@ -573,6 +604,179 @@ document.addEventListener("DOMContentLoaded", () => {
       this.innerHTML = "";
       this.appendChild(successMessage);
     });
+  }
+
+  // FIXED: Enhanced AI chatbot with proper quick reply functionality
+  function initChatbot() {
+    const chatbotToggle = document.getElementById("chatbot-toggle");
+    const chatbotClose = document.getElementById("chatbot-close");
+    const chatbotBox = document.getElementById("chatbot-box");
+    const chatbotMessages = document.getElementById("chatbot-messages");
+    const chatbotInput = document.getElementById("chatbot-input-field");
+    const chatbotSend = document.getElementById("chatbot-send");
+
+    if (
+      !chatbotToggle ||
+      !chatbotClose ||
+      !chatbotBox ||
+      !chatbotMessages ||
+      !chatbotInput ||
+      !chatbotSend
+    ) {
+      return; // Exit if any element is missing
+    }
+
+    // Toggle chatbot visibility
+    chatbotToggle.addEventListener("click", function () {
+      chatbotBox.classList.add("active");
+      // Add welcome message if it's the first open
+      if (chatbotMessages.children.length === 0) {
+        addBotMessage(
+          "Hi! I'm the Lasallian Club AI. How can I help you today?"
+        );
+      }
+    });
+
+    chatbotClose.addEventListener("click", function () {
+      chatbotBox.classList.remove("active");
+    });
+
+    // Send message function
+    function sendMessage() {
+      const message = chatbotInput.value.trim();
+      if (message) {
+        addUserMessage(message);
+        chatbotInput.value = "";
+
+        // Process with Coze API
+        processWithCoze(message);
+      }
+    }
+
+    // Add event listeners for sending messages
+    chatbotSend.addEventListener("click", sendMessage);
+    chatbotInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+
+    // Add message to chat
+    function addUserMessage(text) {
+      const messageDiv = document.createElement("div");
+      messageDiv.className = "message user-message";
+      messageDiv.textContent = text;
+      chatbotMessages.appendChild(messageDiv);
+      scrollToBottom();
+    }
+
+    function addBotMessage(text, includeQuickReplies = false) {
+      const messageDiv = document.createElement("div");
+      messageDiv.className = "message bot-message";
+      messageDiv.textContent = text;
+
+      // Add quick replies to the first bot message only
+      if (includeQuickReplies) {
+        const quickReplies = createQuickReplies();
+        messageDiv.appendChild(quickReplies);
+      }
+
+      chatbotMessages.appendChild(messageDiv);
+      scrollToBottom();
+    }
+
+    // Create quick reply buttons for the chatbot
+    function createQuickReplies() {
+      const quickReplies = [
+        { text: "Mission", query: "What is your mission?" },
+        { text: "Join Club", query: "How can I join the club?" },
+        { text: "Activities", query: "What activities do you organize?" },
+        { text: "Contact", query: "How can I contact you?" },
+      ];
+
+      const repliesContainer = document.createElement("div");
+      repliesContainer.className = "quick-replies";
+
+      quickReplies.forEach((reply) => {
+        const button = document.createElement("button");
+        button.className = "quick-reply-btn";
+        button.textContent = reply.text;
+        button.addEventListener("click", () => {
+          // FIXED: First add the user message to show what was clicked
+          addUserMessage(reply.query);
+
+          // Then process the query
+          processWithCoze(reply.query);
+        });
+        repliesContainer.appendChild(button);
+      });
+
+      return repliesContainer;
+    }
+
+    function scrollToBottom() {
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    // Process message with Coze API
+    function processWithCoze(message) {
+      // Show typing indicator
+      const typingDiv = document.createElement("div");
+      typingDiv.className = "message bot-message typing";
+      chatbotMessages.appendChild(typingDiv);
+      scrollToBottom();
+
+      // Replace this with actual Coze API integration
+      setTimeout(() => {
+        // Remove typing indicator
+        chatbotMessages.removeChild(typingDiv);
+
+        // For now, use a simple response system
+        let response = getSimpleResponse(message);
+        addBotMessage(response);
+      }, 1000);
+    }
+
+    // Simple response system until Coze API is integrated
+    function getSimpleResponse(message) {
+      message = message.toLowerCase();
+
+      if (message.includes("mission") || message.includes("purpose")) {
+        return "Our mission is to spread the spirit of sharing and support those in need through community service, fundraising, and outreach programs that make a real difference in Adama.";
+      } else if (
+        message.includes("get involved") ||
+        message.includes("join") ||
+        message.includes("volunteer")
+      ) {
+        return "You can get involved by becoming a member, volunteering for our events, or making a donation. Visit the 'Get Involved' section on our website for more details.";
+      } else if (message.includes("contact") || message.includes("reach")) {
+        return "You can contact us at lasallianclub@stjosephadama.edu or call +251 123 456 789. We're also available every Friday from 3:30 PM to 5:00 PM at the School Library.";
+      } else if (
+        message.includes("activities") ||
+        message.includes("programs") ||
+        message.includes("events")
+      ) {
+        return "We organize various activities including elder care visits, meal preparation initiatives, educational outreach, community food drives, and our annual charity walk. Check the 'Activities' section for upcoming events.";
+      } else if (
+        message.includes("donate") ||
+        message.includes("contribution")
+      ) {
+        return "You can make a donation by clicking the 'Donate Now' button at the top of our website or visiting the 'Get Involved' section. Your contribution helps us support those in need in the Adama community.";
+      } else {
+        return "Thank you for your message. I'm still learning! For specific information, please check our website sections or contact us directly at lasallianclub@stjosephadama.edu.";
+      }
+    }
+
+    // Initialize with welcome message and quick replies
+    if (
+      chatbotMessages.children.length === 0 &&
+      chatbotBox.classList.contains("active")
+    ) {
+      addBotMessage(
+        "Hi! I'm the Lasallian Club AI. How can I help you today?",
+        true // Include quick replies
+      );
+    }
   }
 
   // Debounce function to limit how often a function can be called
@@ -636,156 +840,6 @@ document.addEventListener("DOMContentLoaded", () => {
         (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
-  }
-
-  // AI chatbot (test)
-  function initChatbot() {
-    const chatbotToggle = document.getElementById("chatbot-toggle");
-    const chatbotClose = document.getElementById("chatbot-close");
-    const chatbotBox = document.getElementById("chatbot-box");
-    const chatbotMessages = document.getElementById("chatbot-messages");
-    const chatbotInput = document.getElementById("chatbot-input-field");
-    const chatbotSend = document.getElementById("chatbot-send");
-
-    if (!chatbotToggle || !chatbotClose || !chatbotBox || !chatbotMessages || !chatbotInput || !chatbotSend) {
-      return; // Exit if any element is missing
-    }
-
-    // Toggle chatbot visibility
-    chatbotToggle.addEventListener("click", function () {
-      chatbotBox.classList.add("active");
-      // Add welcome message if it's the first open
-      if (chatbotMessages.children.length === 0) {
-        addBotMessage(
-          "Hi! I'm the Lasallian Club AI. How can I help you today?"
-        );
-      }
-    });
-
-    chatbotClose.addEventListener("click", function () {
-      chatbotBox.classList.remove("active");
-    });
-
-    // Send message function
-    function sendMessage() {
-      const message = chatbotInput.value.trim();
-      if (message) {
-        addUserMessage(message);
-        chatbotInput.value = "";
-
-        // Process with Coze API
-        processWithCoze(message);
-      }
-    }
-
-    // Add event listeners for sending messages
-    chatbotSend.addEventListener("click", sendMessage);
-    chatbotInput.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        sendMessage();
-      }
-    });
-
-    // Add message to chat
-    function addUserMessage(text) {
-      const messageDiv = document.createElement("div");
-      messageDiv.className = "message user-message";
-      messageDiv.textContent = text;
-      chatbotMessages.appendChild(messageDiv);
-      scrollToBottom();
-    }
-
-    function addBotMessage(text) {
-      const messageDiv = document.createElement("div");
-      messageDiv.className = "message bot-message";
-      messageDiv.textContent = text;
-      
-      // Add quick replies to the first bot message
-      if (chatbotMessages.children.length === 0) {
-        const quickReplies = addQuickReplies();
-        messageDiv.appendChild(quickReplies);
-      }
-      
-      chatbotMessages.appendChild(messageDiv);
-      scrollToBottom();
-    }
-
-    // Add quick reply buttons to the chatbot
-    function addQuickReplies() {
-      const quickReplies = [
-        { text: "Mission", handler: () => processWithCoze("What is your mission?") },
-        { text: "Join Club", handler: () => processWithCoze("How can I join the club?") },
-        { text: "Activities", handler: () => processWithCoze("What activities do you organize?") },
-        { text: "Contact", handler: () => processWithCoze("How can I contact you?") }
-      ];
-      
-      const repliesContainer = document.createElement("div");
-      repliesContainer.className = "quick-replies";
-      
-      quickReplies.forEach(reply => {
-        const button = document.createElement("button");
-        button.className = "quick-reply-btn";
-        button.textContent = reply.text;
-        button.addEventListener("click", reply.handler);
-        repliesContainer.appendChild(button);
-      });
-      
-      return repliesContainer;
-    }
-
-    function scrollToBottom() {
-      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-    }
-
-    // Process message with Coze API
-    function processWithCoze(message) {
-      // Show typing indicator
-      const typingDiv = document.createElement("div");
-      typingDiv.className = "message bot-message typing";
-      typingDiv.textContent = "...";
-      chatbotMessages.appendChild(typingDiv);
-      scrollToBottom();
-
-      // Replace this with actual Coze API integration
-      setTimeout(() => {
-        // Remove typing indicator
-        chatbotMessages.removeChild(typingDiv);
-
-        // For now, use a simple response system
-        let response = getSimpleResponse(message);
-        addBotMessage(response);
-      }, 1000);
-    }
-
-    // Simple response system until Coze API is integrated
-    function getSimpleResponse(message) {
-      message = message.toLowerCase();
-
-      if (message.includes("mission") || message.includes("purpose")) {
-        return "Our mission is to spread the spirit of sharing and support those in need through community service, fundraising, and outreach programs that make a real difference in Adama.";
-      } else if (
-        message.includes("get involved") ||
-        message.includes("join") ||
-        message.includes("volunteer")
-      ) {
-        return "You can get involved by becoming a member, volunteering for our events, or making a donation. Visit the 'Get Involved' section on our website for more details.";
-      } else if (message.includes("contact") || message.includes("reach")) {
-        return "You can contact us at lasallianclub@stjosephadama.edu or call +251 123 456 789. We're also available every Friday from 3:30 PM to 5:00 PM at the School Library.";
-      } else if (
-        message.includes("activities") ||
-        message.includes("programs") ||
-        message.includes("events")
-      ) {
-        return "We organize various activities including elder care visits, meal preparation initiatives, educational outreach, community food drives, and our annual charity walk. Check the 'Activities' section for upcoming events.";
-      } else if (
-        message.includes("donate") ||
-        message.includes("contribution")
-      ) {
-        return "You can make a donation by clicking the 'Donate Now' button at the top of our website or visiting the 'Get Involved' section. Your contribution helps us support those in need in the Adama community.";
-      } else {
-        return "Thank you for your message. I'm still learning! For specific information, please check our website sections or contact us directly at lasallianclub@stjosephadama.edu.";
-      }
-    }
   }
 
   // Add smooth scrolling for anchor links
