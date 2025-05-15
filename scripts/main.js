@@ -8,7 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(callback, 1000 / 60);
     });
 
+  showSlide(0);
+  initHeroCarousel();
   initAnimatedText();
+  initChatbot();
+  initTestimonialSlider();
 
   // Set current year in footer
   document.getElementById("currentYear").textContent = new Date().getFullYear();
@@ -77,9 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Back to top button
-  const backToTopBtn = document.getElementById("backToTop");
-
   function handleBackToTopBtn() {
     if (window.scrollY > 300) {
       backToTopBtn.classList.add("active");
@@ -96,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Hero Carousel Functionality
+  // Hero Carousel
   function initHeroCarousel() {
     const slides = document.querySelectorAll(".carousel-slide");
     const indicators = document.querySelectorAll(".indicator");
@@ -139,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function startSlideInterval() {
       clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 5000);
+      slideInterval = setInterval(nextSlide, 4000);
     }
 
     // Initialize the carousel
@@ -248,106 +249,119 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 50); // Delete speed
           }, 2000); // Wait time before deleting
         }
-      }, 105); // Type speed
+      }, 100); // Type speed
     }
 
     // Start the animation
     animateWord(words[0]);
   }
 
-  // Testimonial slider with improved accessibility and performance
-  const testimonialSlides = document.querySelectorAll(".testimonial-slide");
-  const testimonialDots = document.querySelectorAll(".slider-dots .dot");
-  const prevTestimonialBtn = document.getElementById("prev-btn");
-  const nextTestimonialBtn = document.getElementById("next-btn");
-  let currentTestimonial = 0;
-  let isTestimonialSliding = false;
-
-  function showTestimonial(n) {
-    if (isTestimonialSliding) return;
-    isTestimonialSliding = true;
-
-    // First hide all slides
-    testimonialSlides.forEach((slide) => {
-      slide.style.display = "none";
-      slide.classList.remove("active");
-    });
-
-    testimonialDots.forEach((dot) => {
-      dot.classList.remove("active");
-      dot.setAttribute("aria-selected", "false");
-    });
-
-    currentTestimonial =
-      (n + testimonialSlides.length) % testimonialSlides.length;
-
-    // Then show the current slide with a fade effect
-    testimonialSlides[currentTestimonial].style.display = "block";
-
-    // Small timeout to allow the display change to take
-    // effect before adding the active class
-    setTimeout(() => {
-      testimonialSlides[currentTestimonial].classList.add("active");
-      testimonialDots[currentTestimonial].classList.add("active");
-      testimonialDots[currentTestimonial].setAttribute("aria-selected", "true");
-      isTestimonialSliding = false;
-    }, 10);
-  }
-
-  if (prevTestimonialBtn && nextTestimonialBtn) {
-    prevTestimonialBtn.addEventListener("click", () =>
-      showTestimonial(currentTestimonial - 1)
-    );
-    nextTestimonialBtn.addEventListener("click", () =>
-      showTestimonial(currentTestimonial + 1)
-    );
-  }
-
-  testimonialDots.forEach((dot, index) => {
-    dot.addEventListener("click", () => showTestimonial(index));
-    dot.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
+  // Testimonial slider
+  function initTestimonialSlider() {
+    const testimonialSlides = document.querySelectorAll(".testimonial-slide");
+    const testimonialDots = document.querySelectorAll(".slider-dots .dot");
+    const prevTestimonialBtn = document.getElementById("prev-btn");
+    const nextTestimonialBtn = document.getElementById("next-btn");
+    let currentTestimonial = 0;
+    let isTestimonialSliding = false;
+    let testimonialInterval;
+  
+    function showTestimonial(n) {
+      if (isTestimonialSliding) return;
+      isTestimonialSliding = true;
+  
+      // Hide all slides first
+      testimonialSlides.forEach((slide) => {
+        slide.style.display = "none";
+        slide.classList.remove("active");
+      });
+  
+      testimonialDots.forEach((dot) => {
+        dot.classList.remove("active");
+        dot.setAttribute("aria-selected", "false");
+      });
+  
+      // Calculate the new index with proper wrapping
+      currentTestimonial = (n + testimonialSlides.length) % testimonialSlides.length;
+  
+      // Show the current slide with a fade effect
+      testimonialSlides[currentTestimonial].style.display = "block";
+  
+      // Small timeout to allow the display change to take effect before adding the active class
+      setTimeout(() => {
+        testimonialSlides[currentTestimonial].classList.add("active");
+        testimonialDots[currentTestimonial].classList.add("active");
+        testimonialDots[currentTestimonial].setAttribute("aria-selected", "true");
+        isTestimonialSliding = false;
+      }, 10);
+    }
+  
+    // Set up navigation buttons
+    if (prevTestimonialBtn && nextTestimonialBtn) {
+      prevTestimonialBtn.addEventListener("click", () => {
+        clearInterval(testimonialInterval);
+        showTestimonial(currentTestimonial - 1);
+        startAutoSlide();
+      });
+      
+      nextTestimonialBtn.addEventListener("click", () => {
+        clearInterval(testimonialInterval);
+        showTestimonial(currentTestimonial + 1);
+        startAutoSlide();
+      });
+    }
+  
+    // Set up dot navigation
+    testimonialDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        clearInterval(testimonialInterval);
         showTestimonial(index);
-      }
+        startAutoSlide();
+      });
+      
+      dot.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          clearInterval(testimonialInterval);
+          showTestimonial(index);
+          startAutoSlide();
+        }
+      });
     });
-  });
-
-  // Auto slide for testimonials
-  let testimonialInterval = setInterval(
-    () => showTestimonial(currentTestimonial + 1),
-    5000
-  );
-
-  // Pause auto slide on hover or focus
-  const testimonialSlider = document.querySelector(".testimonial-slider");
-  if (testimonialSlider) {
-    testimonialSlider.addEventListener("mouseenter", () =>
-      clearInterval(testimonialInterval)
-    );
-    testimonialSlider.addEventListener("mouseleave", () => {
+  
+    // Auto slide functionality
+    function startAutoSlide() {
       clearInterval(testimonialInterval);
-      testimonialInterval = setInterval(
-        () => showTestimonial(currentTestimonial + 1),
-        6000
-      );
-    });
-
-    // Accessibility: pause on focus within
-    testimonialSlider.addEventListener("focusin", () =>
-      clearInterval(testimonialInterval)
-    );
-    testimonialSlider.addEventListener("focusout", () => {
-      clearInterval(testimonialInterval);
-      testimonialInterval = setInterval(
-        () => showTestimonial(currentTestimonial + 1),
-        6000
-      );
-    });
+      testimonialInterval = setInterval(() => {
+        showTestimonial(currentTestimonial + 1);
+      }, 6000);
+    }
+  
+    // Pause/resume on hover
+    const testimonialSlider = document.querySelector(".testimonial-slider");
+    if (testimonialSlider) {
+      testimonialSlider.addEventListener("mouseenter", () => {
+        clearInterval(testimonialInterval);
+      });
+      
+      testimonialSlider.addEventListener("mouseleave", () => {
+        startAutoSlide();
+      });
+      
+      // Accessibility: pause on focus within
+      testimonialSlider.addEventListener("focusin", () => {
+        clearInterval(testimonialInterval);
+      });
+      
+      testimonialSlider.addEventListener("focusout", () => {
+        startAutoSlide();
+      });
+    }
+  
+    // Initialize the slider
+    showTestimonial(0);
+    startAutoSlide();
   }
-
-  // Initialize testimonial slider
-  showTestimonial(0);
 
   // Animated counter for impact stats with improved performance
   const counters = document.querySelectorAll(".counter");
@@ -439,7 +453,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       input.addEventListener("input", function () {
-        // Clear error when user starts typing again
         const errorElement = document.getElementById(`${this.id}-error`);
         if (errorElement) {
           errorElement.style.display = "none";
@@ -576,9 +589,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Your showSlide implementation here, or ensure it's defined elsewhere
   }
 
-  showSlide(0);
-  initHeroCarousel(); // Initialize the hero carousel
-
   // Create placeholder images if needed
   function createPlaceholder(element) {
     if (
@@ -619,160 +629,121 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // Add this to your main.js file
-  document.addEventListener("DOMContentLoaded", function () {
-    // Chatbot functionality
-    function initChatbot() {
-      const chatbotToggle = document.getElementById("chatbot-toggle");
-      const chatbotClose = document.getElementById("chatbot-close");
-      const chatbotBox = document.getElementById("chatbot-box");
-      const chatbotMessages = document.getElementById("chatbot-messages");
-      const chatbotInput = document.getElementById("chatbot-input-field");
-      const chatbotSend = document.getElementById("chatbot-send");
+  // AI chatbot (test)
+  function initChatbot() {
+    const chatbotToggle = document.getElementById("chatbot-toggle");
+    const chatbotClose = document.getElementById("chatbot-close");
+    const chatbotBox = document.getElementById("chatbot-box");
+    const chatbotMessages = document.getElementById("chatbot-messages");
+    const chatbotInput = document.getElementById("chatbot-input-field");
+    const chatbotSend = document.getElementById("chatbot-send");
 
-      // Toggle chatbot visibility
-      chatbotToggle.addEventListener("click", function () {
-        chatbotBox.classList.add("active");
-        // Add welcome message if it's the first open
-        if (chatbotMessages.children.length === 0) {
-          addBotMessage(
-            "Hello! I'm the Lasallian Club Assistant. How can I help you today?"
-          );
-        }
-      });
-
-      chatbotClose.addEventListener("click", function () {
-        chatbotBox.classList.remove("active");
-      });
-
-      // Send message function
-      function sendMessage() {
-        const message = chatbotInput.value.trim();
-        if (message) {
-          addUserMessage(message);
-          chatbotInput.value = "";
-
-          // Process with Coze API
-          processWithCoze(message);
-        }
+    // Toggle chatbot visibility
+    chatbotToggle.addEventListener("click", function () {
+      chatbotBox.classList.add("active");
+      // Add welcome message if it's the first open
+      if (chatbotMessages.children.length === 0) {
+        addBotMessage(
+          "Hi! I'm the Lasallian Club AI. How can I help you today?"
+        );
       }
+    });
 
-      // Add event listeners for sending messages
-      chatbotSend.addEventListener("click", sendMessage);
-      chatbotInput.addEventListener("keypress", function (e) {
-        if (e.key === "Enter") {
-          sendMessage();
-        }
-      });
+    chatbotClose.addEventListener("click", function () {
+      chatbotBox.classList.remove("active");
+    });
 
-      // Add message to chat
-      function addUserMessage(text) {
-        const messageDiv = document.createElement("div");
-        messageDiv.className = "message user-message";
-        messageDiv.textContent = text;
-        chatbotMessages.appendChild(messageDiv);
-        scrollToBottom();
-      }
+    // Send message function
+    function sendMessage() {
+      const message = chatbotInput.value.trim();
+      if (message) {
+        addUserMessage(message);
+        chatbotInput.value = "";
 
-      function addBotMessage(text) {
-        const messageDiv = document.createElement("div");
-        messageDiv.className = "message bot-message";
-        messageDiv.textContent = text;
-        chatbotMessages.appendChild(messageDiv);
-        scrollToBottom();
-      }
-
-      function scrollToBottom() {
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-      }
-
-      // Process message with Coze API
-      // Replace the processWithCoze function with this
-      function processWithCoze(message) {
-        // Show typing indicator
-        const typingDiv = document.createElement("div");
-        typingDiv.className = "message bot-message typing";
-        typingDiv.textContent = "...";
-        chatbotMessages.appendChild(typingDiv);
-        scrollToBottom();
-
-        // Call Coze API
-        fetch("https://api.coze.com/v1/chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer YOUR_COZE_API_KEY",
-          },
-          body: JSON.stringify({
-            botId: "YOUR_BOT_ID",
-            message: message,
-            userId: generateUserId(), // Function to generate or retrieve user ID
-          }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // Remove typing indicator
-            chatbotMessages.removeChild(typingDiv);
-
-            // Add bot response
-            addBotMessage(data.response);
-          })
-          .catch((error) => {
-            // Remove typing indicator
-            chatbotMessages.removeChild(typingDiv);
-
-            // Show error message
-            addBotMessage(
-              "I'm having trouble connecting right now. Please try again later."
-            );
-            console.error("Error:", error);
-          });
-      }
-
-      // Generate or retrieve user ID
-      function generateUserId() {
-        let userId = localStorage.getItem("lasallian_chatbot_user_id");
-        if (!userId) {
-          userId = "user_" + Math.random().toString(36).substring(2, 15);
-          localStorage.setItem("lasallian_chatbot_user_id", userId);
-        }
-        return userId;
-      }
-
-      // Simple response system until Coze API is integrated
-      function getSimpleResponse(message) {
-        message = message.toLowerCase();
-
-        if (message.includes("mission") || message.includes("purpose")) {
-          return "Our mission is to spread the spirit of sharing and support those in need through community service, fundraising, and outreach programs that make a real difference in Adama.";
-        } else if (
-          message.includes("get involved") ||
-          message.includes("join") ||
-          message.includes("volunteer")
-        ) {
-          return "You can get involved by becoming a member, volunteering for our events, or making a donation. Visit the 'Get Involved' section on our website for more details.";
-        } else if (message.includes("contact") || message.includes("reach")) {
-          return "You can contact us at lasallianclub@stjosephadama.edu or call +251 123 456 789. We're also available every Friday from 3:30 PM to 5:00 PM at the School Library.";
-        } else if (
-          message.includes("activities") ||
-          message.includes("programs") ||
-          message.includes("events")
-        ) {
-          return "We organize various activities including elder care visits, meal preparation initiatives, educational outreach, community food drives, and our annual charity walk. Check the 'Activities' section for upcoming events.";
-        } else if (
-          message.includes("donate") ||
-          message.includes("contribution")
-        ) {
-          return "You can make a donation by clicking the 'Donate Now' button at the top of our website or visiting the 'Get Involved' section. Your contribution helps us support those in need in the Adama community.";
-        } else {
-          return "Thank you for your message. I'm still learning! For specific information, please check our website sections or contact us directly at lasallianclub@stjosephadama.edu.";
-        }
+        // Process with Coze API
+        processWithCoze(message);
       }
     }
 
-    // Initialize chatbot
-    initChatbot();
-  });
+    // Add event listeners for sending messages
+    chatbotSend.addEventListener("click", sendMessage);
+    chatbotInput.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+
+    // Add message to chat
+    function addUserMessage(text) {
+      const messageDiv = document.createElement("div");
+      messageDiv.className = "message user-message";
+      messageDiv.textContent = text;
+      chatbotMessages.appendChild(messageDiv);
+      scrollToBottom();
+    }
+
+    function addBotMessage(text) {
+      const messageDiv = document.createElement("div");
+      messageDiv.className = "message bot-message";
+      messageDiv.textContent = text;
+      chatbotMessages.appendChild(messageDiv);
+      scrollToBottom();
+    }
+
+    function scrollToBottom() {
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    // Process message with Coze API
+    function processWithCoze(message) {
+      // Show typing indicator
+      const typingDiv = document.createElement("div");
+      typingDiv.className = "message bot-message typing";
+      typingDiv.textContent = "...";
+      chatbotMessages.appendChild(typingDiv);
+      scrollToBottom();
+
+      // Replace this with actual Coze API integration
+      setTimeout(() => {
+        // Remove typing indicator
+        chatbotMessages.removeChild(typingDiv);
+
+        // For now, use a simple response system
+        let response = getSimpleResponse(message);
+        addBotMessage(response);
+      }, 1000);
+    }
+
+    // Simple response system until Coze API is integrated
+    function getSimpleResponse(message) {
+      message = message.toLowerCase();
+
+      if (message.includes("mission") || message.includes("purpose")) {
+        return "Our mission is to spread the spirit of sharing and support those in need through community service, fundraising, and outreach programs that make a real difference in Adama.";
+      } else if (
+        message.includes("get involved") ||
+        message.includes("join") ||
+        message.includes("volunteer")
+      ) {
+        return "You can get involved by becoming a member, volunteering for our events, or making a donation. Visit the 'Get Involved' section on our website for more details.";
+      } else if (message.includes("contact") || message.includes("reach")) {
+        return "You can contact us at lasallianclub@stjosephadama.edu or call +251 123 456 789. We're also available every Friday from 3:30 PM to 5:00 PM at the School Library.";
+      } else if (
+        message.includes("activities") ||
+        message.includes("programs") ||
+        message.includes("events")
+      ) {
+        return "We organize various activities including elder care visits, meal preparation initiatives, educational outreach, community food drives, and our annual charity walk. Check the 'Activities' section for upcoming events.";
+      } else if (
+        message.includes("donate") ||
+        message.includes("contribution")
+      ) {
+        return "You can make a donation by clicking the 'Donate Now' button at the top of our website or visiting the 'Get Involved' section. Your contribution helps us support those in need in the Adama community.";
+      } else {
+        return "Thank you for your message. I'm still learning! For specific information, please check our website sections or contact us directly at lasallianclub@stjosephadama.edu.";
+      }
+    }
+  }
 
   // Add smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
