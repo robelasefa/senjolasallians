@@ -8,11 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(callback, 1000 / 60);
     });
 
-  showSlide(0);
+  // Initialize components
+  initScrollAnimations();
   initHeroCarousel();
   initAnimatedText();
   initChatbot();
   initTestimonialSlider();
+  initBackToTop();
 
   // Set current year in footer
   document.getElementById("currentYear").textContent = new Date().getFullYear();
@@ -81,21 +83,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function handleBackToTopBtn() {
-    if (window.scrollY > 300) {
-      backToTopBtn.classList.add("active");
-    } else {
-      backToTopBtn.classList.remove("active");
-    }
-  }
-
-  backToTopBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+  // Scroll-based animations
+  function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.animate-element');
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const delay = element.getAttribute('data-delay') || 0;
+          
+          setTimeout(() => {
+            element.classList.add('visible');
+          }, delay);
+          
+          observer.unobserve(element);
+        }
+      });
+    }, observerOptions);
+    
+    animatedElements.forEach(element => {
+      observer.observe(element);
     });
-  });
+  }
 
   // Hero Carousel
   function initHeroCarousel() {
@@ -574,20 +590,13 @@ document.addEventListener("DOMContentLoaded", () => {
     "scroll",
     debounce(() => {
       handleHeaderScroll();
-      handleBackToTopBtn();
       updateActiveNavLink();
     }, 10)
   );
 
   // Initialize functions on page load
   handleHeaderScroll();
-  handleBackToTopBtn();
   updateActiveNavLink();
-
-  // Ensure showSlide is defined before calling it
-  function showSlide(index) {
-    // Your showSlide implementation here, or ensure it's defined elsewhere
-  }
 
   // Create placeholder images if needed
   function createPlaceholder(element) {
@@ -638,6 +647,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatbotInput = document.getElementById("chatbot-input-field");
     const chatbotSend = document.getElementById("chatbot-send");
 
+    if (!chatbotToggle || !chatbotClose || !chatbotBox || !chatbotMessages || !chatbotInput || !chatbotSend) {
+      return; // Exit if any element is missing
+    }
+
     // Toggle chatbot visibility
     chatbotToggle.addEventListener("click", function () {
       chatbotBox.classList.add("active");
@@ -686,8 +699,38 @@ document.addEventListener("DOMContentLoaded", () => {
       const messageDiv = document.createElement("div");
       messageDiv.className = "message bot-message";
       messageDiv.textContent = text;
+      
+      // Add quick replies to the first bot message
+      if (chatbotMessages.children.length === 0) {
+        const quickReplies = addQuickReplies();
+        messageDiv.appendChild(quickReplies);
+      }
+      
       chatbotMessages.appendChild(messageDiv);
       scrollToBottom();
+    }
+
+    // Add quick reply buttons to the chatbot
+    function addQuickReplies() {
+      const quickReplies = [
+        { text: "Mission", handler: () => processWithCoze("What is your mission?") },
+        { text: "Join Club", handler: () => processWithCoze("How can I join the club?") },
+        { text: "Activities", handler: () => processWithCoze("What activities do you organize?") },
+        { text: "Contact", handler: () => processWithCoze("How can I contact you?") }
+      ];
+      
+      const repliesContainer = document.createElement("div");
+      repliesContainer.className = "quick-replies";
+      
+      quickReplies.forEach(reply => {
+        const button = document.createElement("button");
+        button.className = "quick-reply-btn";
+        button.textContent = reply.text;
+        button.addEventListener("click", reply.handler);
+        repliesContainer.appendChild(button);
+      });
+      
+      return repliesContainer;
     }
 
     function scrollToBottom() {
