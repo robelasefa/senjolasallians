@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       this.setAttribute("aria-expanded", !expanded);
       this.classList.toggle("active");
       nav.classList.toggle("active");
-      
+
       // Prevent body scrolling when menu is open
       if (!expanded) {
         body.style.overflow = "hidden";
@@ -52,13 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-  
+
   // Close mobile menu when clicking outside
   document.addEventListener("click", (e) => {
     if (
-      nav && 
-      nav.classList.contains("active") && 
-      !nav.contains(e.target) && 
+      nav &&
+      nav.classList.contains("active") &&
+      !nav.contains(e.target) &&
       !mobileMenuBtn.contains(e.target)
     ) {
       mobileMenuBtn.setAttribute("aria-expanded", "false");
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       body.style.overflow = "";
     }
   });
-  
+
   // Handle window resize
   window.addEventListener("resize", () => {
     if (window.innerWidth > 768 && nav && nav.classList.contains("active")) {
@@ -77,8 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
       body.style.overflow = "";
     }
   });
-
-  
 
   // Navbar highlighting based on scroll position
   function updateActiveNavLink() {
@@ -750,7 +748,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         return "You can get involved by becoming a member, volunteering for our events, or making a donation. Visit the 'Get Involved' section on our website for more details.";
       } else if (message.includes("contact") || message.includes("reach")) {
-        return "You can contact us at lasallianclub@stjosephadama.edu or call +251 123 456 789. We're also available every Friday from 3:30 PM to 5:00 PM at the School Library.";
+        return "You can contact us at senjolasallians@stjosephadama.edu or call +251 123 456 789. We're also available every Friday from 3:30 PM to 5:00 PM at the School Library.";
       } else if (
         message.includes("activities") ||
         message.includes("programs") ||
@@ -762,8 +760,14 @@ document.addEventListener("DOMContentLoaded", () => {
         message.includes("contribution")
       ) {
         return "You can make a donation by clicking the 'Donate Now' button at the top of our website or visiting the 'Get Involved' section. Your contribution helps us support those in need in the Adama community.";
+      } else if (
+        message.includes("name") ||
+        message.includes("senjo") ||
+        message.includes("lasallians")
+      ) {
+        return "SenjoLasallians is the name of our organization at St. Joseph Catholic School in Adama. The name combines 'Senjo' from St. Joseph and 'Lasallians' which reflects our connection to the Lasallian educational tradition.";
       } else {
-        return "Thank you for your message. I'm still learning! For specific information, please check our website sections or contact us directly at lasallianclub@stjosephadama.edu.";
+        return "Thank you for your message. I'm still learning! For specific information, please check our website sections or contact us directly at senjolasallians@stjosephadama.edu.";
       }
     }
 
