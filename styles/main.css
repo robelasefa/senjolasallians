@@ -26,7 +26,7 @@
   --font-size-3xl: 2.5rem;
   --font-size-4xl: 3.5rem;
 
-  /* Header height variables for consistent spacing */
+  /* Header height variables */
   --header-height: 80px;
   --header-height-mobile: 65px;
 }
@@ -39,19 +39,19 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px; /* Base font size */
+  font-size: 17px;
 }
 
 /* Responsive base font size */
 @media (max-width: 768px) {
   html {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
   html {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
@@ -369,7 +369,6 @@ ul {
   }
 }
 
-/* Base styles for the animated text */
 .animated-text {
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
@@ -377,7 +376,7 @@ ul {
   display: inline-block;
 }
 
-/* Smoother Blinking cursor styles */
+/* Smoother blinking cursor styles */
 .cursor {
   display: inline-block;
   color: #eee;
@@ -397,7 +396,7 @@ ul {
   }
 }
 
-/* Refined highlight effect */
+/* Highlight effect */
 @keyframes highlight {
   0% {
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
@@ -414,7 +413,7 @@ ul {
   animation: highlight 1.2s ease-in-out;
 }
 
-/* Scroll-based Animation Styles */
+/* Scroll-based animations */
 .animate-element {
   opacity: 0;
   transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -785,31 +784,6 @@ ul {
   transform: scale(0.95);
 }
 
-/* Quick reply buttons for chatbot */
-.quick-replies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.quick-reply-btn {
-  background-color: var(--light-blue);
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  border-radius: 18px;
-  padding: 8px 15px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "Tajawal", sans-serif;
-}
-
-.quick-reply-btn:hover {
-  background-color: var(--primary-color);
-  color: white;
-}
-
 @media (max-width: 576px) {
   .chatbot-container {
     bottom: 20px;
@@ -840,7 +814,7 @@ ul {
   }
 }
 
-/* Header - Improved for mobile */
+/* Header - for mobile */
 header {
   position: fixed;
   top: 0;
@@ -871,7 +845,7 @@ header .container {
 .logo {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   z-index: 1001;
 }
 
@@ -928,7 +902,7 @@ header .container {
   font-size: 1rem;
 }
 
-/* Improved hamburger menu button */
+/* Hamburger menu button */
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
@@ -937,7 +911,7 @@ header .container {
   background: transparent;
   border: none;
   padding: 10px;
-  z-index: 1001; /* Above the mobile menu */
+  z-index: 1001; /* just above the mobile menu */
 }
 
 .mobile-menu-btn span {
