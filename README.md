@@ -1,4 +1,8 @@
-![Lasalle](/assets/logo-lasalle.png)
+<div align="center">
+
+![Lasalle](./assets/logo.png)
+
+</div>
 
 # **SenjoLasallians**
 
@@ -10,12 +14,10 @@ The club is dedicated to **spreading the spirit of sharing** and providing suppo
 
 ## 🎯 Features
 
-- **Modern & Responsive Design** 🌐
-- **Auto-Sliding Image Gallery** 📸
-- **Club Mission & Activities Overview** ✨
-- **Upcoming Events & Fundraising Info** 📅
-- **Contact & Get Involved Section** 📩
-- **AI Chatbot for Website Assistance** 🤖
+- Modern, responsive landing page
+- Auto-sliding hero image carousel
+- Club mission, activities, and impact sections
+- Contact form and newsletter subscription
 
 ## 🎨 Tech Stack
 
