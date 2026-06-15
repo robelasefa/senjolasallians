@@ -45,3 +45,7 @@ This is a static site with no build step or dependencies.
 2. Open `index.html` directly in a browser, or serve the folder with any static
    file server (e.g. `npx serve` or the VS Code "Live Server" extension) for
    the best experience.
+
+## 📜 License
+
+Licensed under the **MIT [LICENSE](./LICENSE)**
