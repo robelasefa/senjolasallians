@@ -1,830 +1,1156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Primary Meta -->
+    <title>
+      Senjo Lasallians | St. Joseph Catholic School – Adama, Ethiopia
+    </title>
+    <meta
+      name="description"
+      content="The Lasallian Club at St. Joseph Catholic School in Adama, Ethiopia — serving the community through elder care, feeding programs, educational outreach, and youth empowerment guided by Lasallian values."
+    />
+    <meta
+      name="keywords"
+      content="Lasallian Club, Senjo Lasallians, St. Joseph Adama, Catholic school Ethiopia, student charity club, community service Adama, Sedeqia, youth outreach Ethiopia, donate Ethiopia"
+    />
+    <meta
+      name="author"
+      content="Lasallian Club – St. Joseph Catholic School, Adama"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://senjolasallians.vercel.app/" />
 
-  <!-- Primary Meta -->
-  <title>Senjo Lasallians | St. Joseph Catholic School – Adama, Ethiopia</title>
-  <meta name="description"
-    content="The Lasallian Club at St. Joseph Catholic School in Adama, Ethiopia — serving the community through elder care, feeding programs, educational outreach, and youth empowerment guided by Lasallian values." />
-  <meta name="keywords"
-    content="Lasallian Club, Senjo Lasallians, St. Joseph Adama, Catholic school Ethiopia, student charity club, community service Adama, Sedeqia, youth outreach Ethiopia, donate Ethiopia" />
-  <meta name="author" content="Lasallian Club – St. Joseph Catholic School, Adama" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://senjolasallians.vercel.app/" />
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://senjolasallians.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Senjo Lasallians – Serving with Faith, Compassion &amp; Community"
+    />
+    <meta
+      property="og:description"
+      content="Students at St. Joseph Catholic School in Adama, Ethiopia spreading the Lasallian spirit through elder care, feeding programs, and educational outreach."
+    />
+    <meta
+      property="og:image"
+      content="https://senjolasallians.vercel.app/images/hero-image1.jpg"
+    />
+    <meta
+      property="og:image:alt"
+      content="Lasallian Club students engaged in community service in Adama"
+    />
+    <meta property="og:site_name" content="Senjo Lasallians" />
+    <meta property="og:locale" content="en_ET" />
 
-  <!-- Open Graph / Social Sharing -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://senjolasallians.vercel.app/" />
-  <meta property="og:title" content="Senjo Lasallians – Serving with Faith, Compassion &amp; Community" />
-  <meta property="og:description"
-    content="Students at St. Joseph Catholic School in Adama, Ethiopia spreading the Lasallian spirit through elder care, feeding programs, and educational outreach." />
-  <meta property="og:image" content="https://senjolasallians.vercel.app/images/hero-image1.jpg" />
-  <meta property="og:image:alt" content="Lasallian Club students engaged in community service in Adama" />
-  <meta property="og:site_name" content="Senjo Lasallians" />
-  <meta property="og:locale" content="en_ET" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Senjo Lasallians – St. Joseph Catholic School, Adama"
+    />
+    <meta
+      name="twitter:description"
+      content="Youth-led community service club in Adama, Ethiopia — serving elders, children, and families through Lasallian values."
+    />
+    <meta
+      name="twitter:image"
+      content="https://senjolasallians.vercel.app/images/hero-image1.jpg"
+    />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Senjo Lasallians – St. Joseph Catholic School, Adama" />
-  <meta name="twitter:description"
-    content="Youth-led community service club in Adama, Ethiopia — serving elders, children, and families through Lasallian values." />
-  <meta name="twitter:image" content="https://senjolasallians.vercel.app/images/hero-image1.jpg" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="apple-touch-icon" href="assets/favicon.ico" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-  <link rel="apple-touch-icon" href="assets/favicon.ico" />
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin />
 
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin />
+    <!-- Fonts: Poppins (headings/brand) + Lato (body) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Fonts: Poppins (headings/brand) + Lato (body) -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
-    rel="stylesheet" />
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/3439efa41a.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/3439efa41a.js" crossorigin="anonymous"></script>
-
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Senjo Lasallians",
-      "alternateName": "Lasallian Club – St. Joseph Catholic School Adama",
-      "url": "https://senjolasallians.vercel.app/",
-      "logo": "https://senjolasallians.vercel.app/assets/logo.png",
-      "description": "A student-led Lasallian charity club at St. Joseph Catholic School, Adama, Ethiopia dedicated to community service, elder care, and youth empowerment.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Adama",
-        "addressCountry": "ET"
-      },
-      "email": "senjolasallians@stjosephadama.edu",
-      "sameAs": []
-    }
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Senjo Lasallians",
+        "alternateName": "Lasallian Club – St. Joseph Catholic School Adama",
+        "url": "https://senjolasallians.vercel.app/",
+        "logo": "https://senjolasallians.vercel.app/assets/logo.png",
+        "description": "A student-led Lasallian charity club at St. Joseph Catholic School, Adama, Ethiopia dedicated to community service, elder care, and youth empowerment.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Adama",
+          "addressCountry": "ET"
+        },
+        "email": "senjolasallians@stjosephadama.edu",
+        "sameAs": []
+      }
     </script>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles/main.css" />
-</head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
 
-<body>
+  <body>
+    <!-- Skip to Main Content (accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Skip to Main Content (accessibility) -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- ======== HEADER ======== -->
-  <header id="header" role="banner">
-    <div class="container header-inner">
-
-      <!-- Logo -->
-      <a href="#home" class="logo" aria-label="Senjo Lasallians – home">
-        <img src="assets/logo.png" alt="" class="logo-img" aria-hidden="true" width="40" height="40" />
-        <div class="logo-text">
-          <span class="logo-name">Senjo Lasallians</span>
-          <span class="logo-school">St. Joseph Catholic School – Adama</span>
-        </div>
-      </a>
-
-      <!-- Primary Navigation -->
-      <nav id="nav-menu" aria-label="Primary navigation">
-        <ul class="nav-links" role="list">
-          <li><a href="#home" class="active">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#activities">Activities</a></li>
-          <li><a href="#impact">Our Impact</a></li>
-          <li><a href="#join">Get Involved</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <!-- Desktop Donate CTA -->
-      <div class="header-cta" aria-hidden="false">
-        <a href="#donate" class="btn btn-primary btn-sm">Donate Now</a>
-      </div>
-
-      <!-- Mobile Menu Toggle -->
-      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false"
-        aria-controls="nav-menu">
-        <span class="bar" aria-hidden="true"></span>
-        <span class="bar" aria-hidden="true"></span>
-        <span class="bar" aria-hidden="true"></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ======== MAIN CONTENT ======== -->
-  <main id="main-content">
-
-    <!-- ---- HERO ---- -->
-    <section id="home" class="hero" aria-label="Welcome to Senjo Lasallians">
-
-      <!-- Background Carousel -->
-      <div class="hero-carousel" aria-hidden="true" role="presentation">
-        <div class="carousel-container">
-          <div class="carousel-slide active">
-            <img src="images/hero-image1.jpg" alt="" loading="eager" fetchpriority="high" decoding="async" />
+    <!-- ======== HEADER ======== -->
+    <header id="header" role="banner">
+      <div class="container header-inner">
+        <!-- Logo -->
+        <a href="#home" class="logo" aria-label="Senjo Lasallians – home">
+          <img
+            src="assets/logo.png"
+            alt=""
+            class="logo-img"
+            aria-hidden="true"
+            width="40"
+            height="40"
+          />
+          <div class="logo-text">
+            <span class="logo-name">Senjo Lasallians</span>
+            <span class="logo-school">St. Joseph Catholic School – Adama</span>
           </div>
-          <div class="carousel-slide">
-            <img src="images/hero-image2.jpg" alt="" loading="lazy" decoding="async" />
-          </div>
-          <div class="carousel-slide">
-            <img src="images/hero-image3.jpg" alt="" loading="lazy" decoding="async" />
-          </div>
-          <div class="carousel-slide">
-            <img src="images/hero-image4.jpg" alt="" loading="lazy" decoding="async" />
-          </div>
-          <div class="carousel-slide">
-            <img src="images/hero-image5.jpg" alt="" loading="lazy" decoding="async" />
-          </div>
+        </a>
+
+        <!-- Primary Navigation -->
+        <nav id="nav-menu" aria-label="Primary navigation">
+          <ul class="nav-links" role="list">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#impact">Our Impact</a></li>
+            <li><a href="#join">Get Involved</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Desktop Donate CTA -->
+        <div class="header-cta" aria-hidden="false">
+          <a href="#donate" class="btn btn-primary btn-sm">Donate Now</a>
         </div>
 
-        <!-- Pill-style Slide Indicators -->
-        <div class="carousel-indicators" role="tablist" aria-label="Hero image slides">
-          <button class="indicator active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1 of 5"
-            tabindex="0"></button>
-          <button class="indicator" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2 of 5"
-            tabindex="-1"></button>
-          <button class="indicator" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3 of 5"
-            tabindex="-1"></button>
-          <button class="indicator" data-index="3" role="tab" aria-selected="false" aria-label="Slide 4 of 5"
-            tabindex="-1"></button>
-          <button class="indicator" data-index="4" role="tab" aria-selected="false" aria-label="Slide 5 of 5"
-            tabindex="-1"></button>
-        </div>
+        <!-- Mobile Menu Toggle -->
+        <button
+          class="mobile-menu-btn"
+          id="mobile-menu-btn"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+        </button>
       </div>
+    </header>
 
-      <!-- Hero Content -->
-      <div class="container">
-        <div class="hero-content animate-element fade-in">
-          <p class="hero-eyebrow">St. Joseph Catholic School · Adama, Ethiopia</p>
-          <h1>
-            <span class="h1-static">Spreading the Spirit&nbsp;of</span>
-            <span class="animated-text-container" aria-live="polite" aria-atomic="true">
-              <span class="animated-text" aria-hidden="true"></span>
-              <span class="cursor" aria-hidden="true">|</span>
-              <span class="sr-only">– Sharing, Compassion, Generosity, Kindness, Empathy, Faith</span>
-            </span>
-          </h1>
-          <p class="hero-lead">
-            The Lasallian Club at St.&nbsp;Joseph Catholic School is dedicated to
-            supporting those in need through community service, fundraising,
-            and outreach programs that make a real difference in Adama.
-          </p>
-          <div class="hero-buttons">
-            <a href="#join" class="btn btn-primary">Join Our Mission</a>
-            <a href="#about" class="btn btn-outline-white">Learn More</a>
+    <!-- ======== MAIN CONTENT ======== -->
+    <main id="main-content">
+      <!-- ---- HERO ---- -->
+      <section id="home" class="hero" aria-label="Welcome to Senjo Lasallians">
+        <!-- Background Carousel -->
+        <div class="hero-carousel" aria-hidden="true" role="presentation">
+          <div class="carousel-container">
+            <div class="carousel-slide active">
+              <img
+                src="images/hero-image1.jpg"
+                alt=""
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/hero-image2.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/hero-image3.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/hero-image4.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="carousel-slide">
+              <img
+                src="images/hero-image5.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- Pill-style Slide Indicators -->
+          <div
+            class="carousel-indicators"
+            role="tablist"
+            aria-label="Hero image slides"
+          >
+            <button
+              class="indicator active"
+              data-index="0"
+              role="tab"
+              aria-selected="true"
+              aria-label="Slide 1 of 5"
+              tabindex="0"
+            ></button>
+            <button
+              class="indicator"
+              data-index="1"
+              role="tab"
+              aria-selected="false"
+              aria-label="Slide 2 of 5"
+              tabindex="-1"
+            ></button>
+            <button
+              class="indicator"
+              data-index="2"
+              role="tab"
+              aria-selected="false"
+              aria-label="Slide 3 of 5"
+              tabindex="-1"
+            ></button>
+            <button
+              class="indicator"
+              data-index="3"
+              role="tab"
+              aria-selected="false"
+              aria-label="Slide 4 of 5"
+              tabindex="-1"
+            ></button>
+            <button
+              class="indicator"
+              data-index="4"
+              role="tab"
+              aria-selected="false"
+              aria-label="Slide 5 of 5"
+              tabindex="-1"
+            ></button>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ---- ABOUT ---- -->
-    <section id="about" class="about" aria-labelledby="about-heading">
-      <div class="section-curve section-curve--white" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#ffffff" />
-        </svg>
-      </div>
-      <div class="container">
-        <header class="section-header animate-element fade-in">
-          <h2 id="about-heading">About Our Club</h2>
-          <p>
-            Motivated by the principles of St.&nbsp;John Baptist de La Salle, we
-            take compassionate action to identify and assist underprivileged
-            students and community members in Adama.
-          </p>
-        </header>
-
-        <div class="about-content">
-          <figure class="about-image animate-element slide-in-right">
-            <img src="images/about-image.jpg"
-              alt="Female members of the Lasallian Club gathered together at St. Joseph Catholic School"
-              loading="lazy" />
-          </figure>
-
-          <div class="about-text animate-element slide-in-left">
-            <h3>Our Mission</h3>
-            <p>
-              The Lasallian Club at St.&nbsp;Joseph Catholic School – Adama is
-              dedicated to spreading the spirit of sharing and supporting
-              those in need. We identify less privileged students and members
-              of the local community who require assistance and facilitate the
-              necessary support through fundraising, sponsorships, and
-              donations.
+        <!-- Hero Content -->
+        <div class="container">
+          <div class="hero-content animate-element fade-in">
+            <p class="hero-eyebrow">
+              St. Joseph Catholic School · Adama, Ethiopia
             </p>
-
-            <h3>Our Values</h3>
-            <ul class="values-grid" role="list">
-              <li class="value-item animate-element zoom-in" data-delay="0">
-                <i class="fas fa-heart" aria-hidden="true"></i>
-                <h4>Compassion</h4>
-                <p>
-                  Showing care and understanding for those in need through
-                  empathetic action
-                </p>
-              </li>
-              <li class="value-item animate-element zoom-in" data-delay="150">
-                <i class="fas fa-hands-helping" aria-hidden="true"></i>
-                <h4>Service</h4>
-                <p>
-                  Dedicated to helping others selflessly and with genuine
-                  commitment
-                </p>
-              </li>
-              <li class="value-item animate-element zoom-in" data-delay="300">
-                <i class="fas fa-users" aria-hidden="true"></i>
-                <h4>Community</h4>
-                <p>
-                  Building strong relationships and support networks that
-                  empower everyone
-                </p>
-              </li>
-              <li class="value-item animate-element zoom-in" data-delay="450">
-                <i class="fas fa-pray" aria-hidden="true"></i>
-                <h4>Faith</h4>
-                <p>
-                  Guided by Lasallian principles and Catholic values in all
-                  our endeavors
-                </p>
-              </li>
-            </ul>
+            <h1>
+              <span class="h1-static">Spreading the Spirit&nbsp;of</span>
+              <span
+                class="animated-text-container"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <span class="animated-text" aria-hidden="true"></span>
+                <span class="cursor" aria-hidden="true">|</span>
+                <span class="sr-only"
+                  >– Sharing, Compassion, Generosity, Kindness, Empathy,
+                  Faith</span
+                >
+              </span>
+            </h1>
+            <p class="hero-lead">
+              The Lasallian Club at St.&nbsp;Joseph Catholic School is dedicated
+              to supporting those in need through community service,
+              fundraising, and outreach programs that make a real difference in
+              Adama.
+            </p>
+            <div class="hero-buttons">
+              <a href="#join" class="btn btn-primary">Join Our Mission</a>
+              <a href="#about" class="btn btn-outline-white">Learn More</a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ---- ACTIVITIES ---- -->
-    <section id="activities" class="activities" aria-labelledby="activities-heading">
-      <div class="section-curve section-curve--alt" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,60 C480,0 960,0 1440,60 L1440,0 L0,0 Z" fill="#fafafa" />
-        </svg>
-      </div>
-      <div class="container">
-        <header class="section-header animate-element fade-in">
-          <h2 id="activities-heading">Our Activities &amp; Programs</h2>
-          <p>
-            Throughout the year, our club members actively engage in community
-            service, elder care visits, and food preparation initiatives to
-            directly support those in need within the Adama community.
-          </p>
-        </header>
-
-        <div class="activities-grid">
-          <article class="activity-card animate-element slide-up" data-delay="0">
-            <div class="activity-image">
-              <img src="images/elder-care.jpg"
-                alt="Lasallian Club students visiting elderly residents at the Sedeqia Charity Association"
-                loading="lazy" />
-            </div>
-            <div class="activity-content">
-              <h3>Elder Care Visits</h3>
-              <p>
-                Our club members regularly visit elderly residents at the
-                Sedeqia Charity Association, providing companionship,
-                assistance, and delivering essential supplies to improve their
-                quality of life.
-              </p>
-            </div>
-          </article>
-
-          <article class="activity-card animate-element slide-up" data-delay="200">
-            <div class="activity-image">
-              <img src="images/meal-preparation.jpg"
-                alt="Students preparing meals together for community service events" loading="lazy" />
-            </div>
-            <div class="activity-content">
-              <h3>Meal Preparation Initiatives</h3>
-              <p>
-                Students actively participate in preparing meals for community
-                service events, learning valuable skills while contributing to
-                feeding programs that support vulnerable families in Adama.
-              </p>
-            </div>
-          </article>
-
-          <article class="activity-card animate-element slide-up" data-delay="400">
-            <div class="activity-image">
-              <img src="images/educational-visit.jpg" alt="Students participating in an educational visit at Sedeqia"
-                loading="lazy" />
-            </div>
-            <div class="activity-content">
-              <h3>Educational Outreach</h3>
-              <p>
-                We organize educational visits to the Sedeqia Charity
-                Association where students learn about community needs
-                firsthand and participate in collaborative projects to address
-                local challenges.
-              </p>
-            </div>
-          </article>
+      <!-- ---- ABOUT ---- -->
+      <section id="about" class="about" aria-labelledby="about-heading">
+        <div class="section-curve section-curve--white" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 60"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z"
+              fill="#ffffff"
+            />
+          </svg>
         </div>
+        <div class="container">
+          <header class="section-header animate-element fade-in">
+            <h2 id="about-heading">About Our Club</h2>
+            <p>
+              Motivated by the principles of St.&nbsp;John Baptist de La Salle,
+              we take compassionate action to identify and assist
+              underprivileged students and community members in Adama.
+            </p>
+          </header>
 
-        <!-- Upcoming Events -->
-        <div class="upcoming-events animate-element fade-in">
-          <h3>Upcoming Events</h3>
-          <ol class="events-list" aria-label="Upcoming club events">
-            <li class="event-item animate-element slide-in-left" data-delay="0">
-              <div class="event-date" aria-label="March 22">
-                <span class="day" aria-hidden="true">22</span>
-                <span class="month" aria-hidden="true">Mar</span>
-              </div>
-              <div class="event-details">
-                <h4>Community Food Drive</h4>
-                <p>
-                  Help us collect and distribute food packages to families in
-                  need within our local community. Your contributions make a
-                  real difference!
-                </p>
-                <p>
-                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                  <span>Sedeqia Charity Association</span>
-                </p>
-              </div>
-            </li>
+          <div class="about-content">
+            <figure class="about-image animate-element slide-in-right">
+              <img
+                src="images/about-image.jpg"
+                alt="Female members of the Lasallian Club gathered together at St. Joseph Catholic School"
+                loading="lazy"
+              />
+            </figure>
 
-            <li class="event-item animate-element slide-in-left" data-delay="200">
-              <div class="event-date" aria-label="May 28">
-                <span class="day" aria-hidden="true">28</span>
-                <span class="month" aria-hidden="true">May</span>
-              </div>
-              <div class="event-details">
-                <h4>Annual Charity Walk</h4>
-                <p>
-                  Join us for our annual charity walk to raise funds for
-                  school supplies for underprivileged children. Every step
-                  helps a child learn!
-                </p>
-                <p>
-                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                  <span>Adama Community Center</span>
-                </p>
-              </div>
-            </li>
+            <div class="about-text animate-element slide-in-left">
+              <h3>Our Mission</h3>
+              <p>
+                The Lasallian Club at St.&nbsp;Joseph Catholic School – Adama is
+                dedicated to spreading the spirit of sharing and supporting
+                those in need. We identify less privileged students and members
+                of the local community who require assistance and facilitate the
+                necessary support through fundraising, sponsorships, and
+                donations.
+              </p>
 
-            <li class="event-item animate-element slide-in-left" data-delay="400">
-              <div class="event-date" aria-label="September 1">
-                <span class="day" aria-hidden="true">1</span>
-                <span class="month" aria-hidden="true">Sep</span>
-              </div>
-              <div class="event-details">
-                <h4>Enqutatash Gift Program</h4>
-                <p>
-                  Greeting the New Year by spreading joy to the kids in our
-                  neighborhood. Together, we can make this Enqutatash one they
-                  won't soon forget!
-                </p>
-                <p>
-                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                  <span>SJS Lunchroom</span>
-                </p>
-              </div>
-            </li>
-          </ol>
+              <h3>Our Values</h3>
+              <ul class="values-grid" role="list">
+                <li class="value-item animate-element zoom-in" data-delay="0">
+                  <i class="fas fa-heart" aria-hidden="true"></i>
+                  <h4>Compassion</h4>
+                  <p>
+                    Showing care and understanding for those in need through
+                    empathetic action
+                  </p>
+                </li>
+                <li class="value-item animate-element zoom-in" data-delay="150">
+                  <i class="fas fa-hands-helping" aria-hidden="true"></i>
+                  <h4>Service</h4>
+                  <p>
+                    Dedicated to helping others selflessly and with genuine
+                    commitment
+                  </p>
+                </li>
+                <li class="value-item animate-element zoom-in" data-delay="300">
+                  <i class="fas fa-users" aria-hidden="true"></i>
+                  <h4>Community</h4>
+                  <p>
+                    Building strong relationships and support networks that
+                    empower everyone
+                  </p>
+                </li>
+                <li class="value-item animate-element zoom-in" data-delay="450">
+                  <i class="fas fa-pray" aria-hidden="true"></i>
+                  <h4>Faith</h4>
+                  <p>
+                    Guided by Lasallian principles and Catholic values in all
+                    our endeavors
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ---- IMPACT ---- -->
-    <section id="impact" class="impact" aria-labelledby="impact-heading">
-      <div class="section-curve section-curve--white" aria-hidden="true">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#ffffff" />
-        </svg>
-      </div>
-      <div class="container">
-        <header class="section-header animate-element fade-in">
-          <h2 id="impact-heading">Our Impact</h2>
-          <p>
-            See how our efforts have positively impacted the lives of people
-            we serve in the Adama community by bringing about long-lasting,
-            significant change.
-          </p>
-        </header>
-
-        <div class="impact-grid">
-
-          <!-- Impact Card 1 -->
-          <article class="impact-card animate-element slide-in-right">
-            <div class="impact-image">
-              <img src="images/impact-image1.jpg"
-                alt="Student receiving a certificate of recognition at Sedeqia Charity Association" loading="lazy" />
-            </div>
-            <div class="impact-content">
-              <h3>Educational Support</h3>
-              <p>
-                We are recognized and have received certificates for our
-                provision of books, clothing, school supplies, and financial
-                aid to guarantee that every child has access to a high-quality
-                education and the chance to create a better future.
-              </p>
-              <div class="impact-stats">
-                <div class="stat animate-element count-up">
-                  <span class="counter" data-target="45">0</span>
-                  <p>Students Supported</p>
-                </div>
-                <div class="stat animate-element count-up" data-delay="200">
-                  <span class="counter" data-target="2">0</span>
-                  <p>Schools Partnered</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Impact Card 2 -->
-          <article class="impact-card reverse animate-element slide-in-left">
-            <div class="impact-image">
-              <img src="images/impact-image2.jpg" alt="Students serving meals at a community event in Adama"
-                loading="lazy" />
-            </div>
-            <div class="impact-content">
-              <h3>Food Security Initiatives</h3>
-              <p>
-                Our club members frequently cook and deliver meals to Adama's
-                most disadvantaged families. Through our food security
-                initiatives, we have contributed to the reduction of hunger
-                and malnutrition while imparting valuable skills to student
-                volunteers who understand the importance of compassion.
-              </p>
-              <div class="impact-stats">
-                <div class="stat animate-element count-up">
-                  <span class="counter" data-target="1200">0</span>
-                  <p>Meals Served</p>
-                </div>
-                <div class="stat animate-element count-up" data-delay="200">
-                  <span class="counter" data-target="8">0</span>
-                  <p>Food Drives</p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Impact Card 3 -->
-          <article class="impact-card animate-element slide-in-right">
-            <div class="impact-image">
-              <img src="images/impact-image3.jpg"
-                alt="Children in the Adama region benefiting from club outreach programs" loading="lazy" />
-            </div>
-            <div class="impact-content">
-              <h3>Community Outreach</h3>
-              <p>
-                Many hundreds of children in the Adama region have benefited
-                from our outreach initiatives. By offering educational
-                seminars and leisure activities, we establish constructive
-                settings where children grow, learn, and play together while
-                gaining the abilities and self-assurance they need to succeed.
-              </p>
-              <div class="impact-stats">
-                <div class="stat animate-element count-up">
-                  <span class="counter" data-target="350">0</span>
-                  <p>Children Reached</p>
-                </div>
-                <div class="stat animate-element count-up" data-delay="200">
-                  <span class="counter" data-target="24">0</span>
-                  <p>Community Events</p>
-                </div>
-              </div>
-            </div>
-          </article>
+      <!-- ---- ACTIVITIES ---- -->
+      <section
+        id="activities"
+        class="activities"
+        aria-labelledby="activities-heading"
+      >
+        <div class="section-curve section-curve--alt" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 60"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,60 C480,0 960,0 1440,60 L1440,0 L0,0 Z"
+              fill="#fafafa"
+            />
+          </svg>
         </div>
+        <div class="container">
+          <header class="section-header animate-element fade-in">
+            <h2 id="activities-heading">Our Activities &amp; Programs</h2>
+            <p>
+              Throughout the year, our club members actively engage in community
+              service, elder care visits, and food preparation initiatives to
+              directly support those in need within the Adama community.
+            </p>
+          </header>
 
-        <!-- Testimonials -->
-        <div class="testimonials animate-element fade-in">
-          <h3>What People Say About Our Work</h3>
+          <div class="activities-grid">
+            <article
+              class="activity-card animate-element slide-up"
+              data-delay="0"
+            >
+              <div class="activity-image">
+                <img
+                  src="images/elder-care.jpg"
+                  alt="Lasallian Club students visiting elderly residents at the Sedeqia Charity Association"
+                  loading="lazy"
+                />
+              </div>
+              <div class="activity-content">
+                <h3>Elder Care Visits</h3>
+                <p>
+                  Our club members regularly visit elderly residents at the
+                  Sedeqia Charity Association, providing companionship,
+                  assistance, and delivering essential supplies to improve their
+                  quality of life.
+                </p>
+              </div>
+            </article>
 
-          <div class="testimonial-slider" role="region" aria-label="Testimonials" aria-live="polite">
-            <div class="testimonial-slide active" role="group" aria-label="Testimonial 1 of 3">
-              <blockquote class="testimonial-content">
-                <div class="testimonial-header">
-                  <div class="testimonial-avatar">
-                    <img src="images/sedeqia-manager.jpg" alt="Adane Feyisa" loading="lazy" />
-                    <div class="testimonial-icon" aria-hidden="true">
-                      <i class="fas fa-quote-left"></i>
+            <article
+              class="activity-card animate-element slide-up"
+              data-delay="200"
+            >
+              <div class="activity-image">
+                <img
+                  src="images/meal-preparation.jpg"
+                  alt="Students preparing meals together for community service events"
+                  loading="lazy"
+                />
+              </div>
+              <div class="activity-content">
+                <h3>Meal Preparation Initiatives</h3>
+                <p>
+                  Students actively participate in preparing meals for community
+                  service events, learning valuable skills while contributing to
+                  feeding programs that support vulnerable families in Adama.
+                </p>
+              </div>
+            </article>
+
+            <article
+              class="activity-card animate-element slide-up"
+              data-delay="400"
+            >
+              <div class="activity-image">
+                <img
+                  src="images/educational-visit.jpg"
+                  alt="Students participating in an educational visit at Sedeqia"
+                  loading="lazy"
+                />
+              </div>
+              <div class="activity-content">
+                <h3>Educational Outreach</h3>
+                <p>
+                  We organize educational visits to the Sedeqia Charity
+                  Association where students learn about community needs
+                  firsthand and participate in collaborative projects to address
+                  local challenges.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Upcoming Events -->
+          <div class="upcoming-events animate-element fade-in">
+            <h3>Upcoming Events</h3>
+            <ol class="events-list" aria-label="Upcoming club events">
+              <li
+                class="event-item animate-element slide-in-left"
+                data-delay="0"
+              >
+                <div class="event-date" aria-label="March 22">
+                  <span class="day" aria-hidden="true">22</span>
+                  <span class="month" aria-hidden="true">Mar</span>
+                </div>
+                <div class="event-details">
+                  <h4>Community Food Drive</h4>
+                  <p>
+                    Help us collect and distribute food packages to families in
+                    need within our local community. Your contributions make a
+                    real difference!
+                  </p>
+                  <p>
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <span>Sedeqia Charity Association</span>
+                  </p>
+                </div>
+              </li>
+
+              <li
+                class="event-item animate-element slide-in-left"
+                data-delay="200"
+              >
+                <div class="event-date" aria-label="May 28">
+                  <span class="day" aria-hidden="true">28</span>
+                  <span class="month" aria-hidden="true">May</span>
+                </div>
+                <div class="event-details">
+                  <h4>Annual Charity Walk</h4>
+                  <p>
+                    Join us for our annual charity walk to raise funds for
+                    school supplies for underprivileged children. Every step
+                    helps a child learn!
+                  </p>
+                  <p>
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <span>Adama Community Center</span>
+                  </p>
+                </div>
+              </li>
+
+              <li
+                class="event-item animate-element slide-in-left"
+                data-delay="400"
+              >
+                <div class="event-date" aria-label="September 1">
+                  <span class="day" aria-hidden="true">1</span>
+                  <span class="month" aria-hidden="true">Sep</span>
+                </div>
+                <div class="event-details">
+                  <h4>Enqutatash Gift Program</h4>
+                  <p>
+                    Greeting the New Year by spreading joy to the kids in our
+                    neighborhood. Together, we can make this Enqutatash one they
+                    won't soon forget!
+                  </p>
+                  <p>
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                    <span>SJS Lunchroom</span>
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- IMPACT ---- -->
+      <section id="impact" class="impact" aria-labelledby="impact-heading">
+        <div class="section-curve section-curve--white" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 60"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z"
+              fill="#ffffff"
+            />
+          </svg>
+        </div>
+        <div class="container">
+          <header class="section-header animate-element fade-in">
+            <h2 id="impact-heading">Our Impact</h2>
+            <p>
+              See how our efforts have positively impacted the lives of people
+              we serve in the Adama community by bringing about long-lasting,
+              significant change.
+            </p>
+          </header>
+
+          <div class="impact-grid">
+            <!-- Impact Card 1 -->
+            <article class="impact-card animate-element slide-in-right">
+              <div class="impact-image">
+                <img
+                  src="images/impact-image1.jpg"
+                  alt="Student receiving a certificate of recognition at Sedeqia Charity Association"
+                  loading="lazy"
+                />
+              </div>
+              <div class="impact-content">
+                <h3>Educational Support</h3>
+                <p>
+                  We are recognized and have received certificates for our
+                  provision of books, clothing, school supplies, and financial
+                  aid to guarantee that every child has access to a high-quality
+                  education and the chance to create a better future.
+                </p>
+                <div class="impact-stats">
+                  <div class="stat animate-element count-up">
+                    <span class="counter" data-target="45">0</span>
+                    <p>Students Supported</p>
+                  </div>
+                  <div class="stat animate-element count-up" data-delay="200">
+                    <span class="counter" data-target="2">0</span>
+                    <p>Schools Partnered</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Impact Card 2 -->
+            <article class="impact-card reverse animate-element slide-in-left">
+              <div class="impact-image">
+                <img
+                  src="images/impact-image2.jpg"
+                  alt="Students serving meals at a community event in Adama"
+                  loading="lazy"
+                />
+              </div>
+              <div class="impact-content">
+                <h3>Food Security Initiatives</h3>
+                <p>
+                  Our club members frequently cook and deliver meals to Adama's
+                  most disadvantaged families. Through our food security
+                  initiatives, we have contributed to the reduction of hunger
+                  and malnutrition while imparting valuable skills to student
+                  volunteers who understand the importance of compassion.
+                </p>
+                <div class="impact-stats">
+                  <div class="stat animate-element count-up">
+                    <span class="counter" data-target="1200">0</span>
+                    <p>Meals Served</p>
+                  </div>
+                  <div class="stat animate-element count-up" data-delay="200">
+                    <span class="counter" data-target="8">0</span>
+                    <p>Food Drives</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Impact Card 3 -->
+            <article class="impact-card animate-element slide-in-right">
+              <div class="impact-image">
+                <img
+                  src="images/impact-image3.jpg"
+                  alt="Children in the Adama region benefiting from club outreach programs"
+                  loading="lazy"
+                />
+              </div>
+              <div class="impact-content">
+                <h3>Community Outreach</h3>
+                <p>
+                  Many hundreds of children in the Adama region have benefited
+                  from our outreach initiatives. By offering educational
+                  seminars and leisure activities, we establish constructive
+                  settings where children grow, learn, and play together while
+                  gaining the abilities and self-assurance they need to succeed.
+                </p>
+                <div class="impact-stats">
+                  <div class="stat animate-element count-up">
+                    <span class="counter" data-target="350">0</span>
+                    <p>Children Reached</p>
+                  </div>
+                  <div class="stat animate-element count-up" data-delay="200">
+                    <span class="counter" data-target="24">0</span>
+                    <p>Community Events</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Testimonials -->
+          <div class="testimonials animate-element fade-in">
+            <h3>What People Say About Our Work</h3>
+
+            <div
+              class="testimonial-slider"
+              role="region"
+              aria-label="Testimonials"
+              aria-live="polite"
+            >
+              <div
+                class="testimonial-slide active"
+                role="group"
+                aria-label="Testimonial 1 of 3"
+              >
+                <blockquote class="testimonial-content">
+                  <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                      <img
+                        src="images/sedeqia-manager.jpg"
+                        alt="Adane Feyisa"
+                        loading="lazy"
+                      />
+                      <div class="testimonial-icon" aria-hidden="true">
+                        <i class="fas fa-quote-left"></i>
+                      </div>
+                    </div>
+                    <div class="testimonial-info">
+                      <h4>Adane Feyisa</h4>
+                      <p>Manager, Sedeqia Charity Association</p>
                     </div>
                   </div>
-                  <div class="testimonial-info">
-                    <h4>Adane Feyisa</h4>
-                    <p>Manager, Sedeqia Charity Association</p>
-                  </div>
-                </div>
-                <p>
-                  "For Sedeqia, the Lasallian Club has been a tremendously
-                  helpful partner. Our senior citizens now enjoy a much higher
-                  quality of life because of their unwavering commitment and
-                  support. Every visit is infused with enthusiasm, excitement,
-                  and sincere compassion from the students."
-                </p>
-              </blockquote>
-            </div>
+                  <p>
+                    "For Sedeqia, the Lasallian Club has been a tremendously
+                    helpful partner. Our senior citizens now enjoy a much higher
+                    quality of life because of their unwavering commitment and
+                    support. Every visit is infused with enthusiasm, excitement,
+                    and sincere compassion from the students."
+                  </p>
+                </blockquote>
+              </div>
 
-            <div class="testimonial-slide" role="group" aria-label="Testimonial 2 of 3">
-              <blockquote class="testimonial-content">
-                <div class="testimonial-header">
-                  <div class="testimonial-avatar">
-                    <img src="images/grade11-student.jpg" alt="Gelila Taye" loading="lazy" />
-                    <div class="testimonial-icon" aria-hidden="true">
-                      <i class="fas fa-quote-left"></i>
+              <div
+                class="testimonial-slide"
+                role="group"
+                aria-label="Testimonial 2 of 3"
+              >
+                <blockquote class="testimonial-content">
+                  <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                      <img
+                        src="images/grade11-student.jpg"
+                        alt="Gelila Taye"
+                        loading="lazy"
+                      />
+                      <div class="testimonial-icon" aria-hidden="true">
+                        <i class="fas fa-quote-left"></i>
+                      </div>
+                    </div>
+                    <div class="testimonial-info">
+                      <h4>Gelila Taye</h4>
+                      <p>Club Member, Grade 11</p>
                     </div>
                   </div>
-                  <div class="testimonial-info">
-                    <h4>Gelila Taye</h4>
-                    <p>Club Member, Grade 11</p>
-                  </div>
-                </div>
-                <p>
-                  "Being a member of the Lasallian Club has changed the way I
-                  understand service. My experience working closely with those
-                  in need in the community has taught me to be grateful and
-                  empathetic. I will carry with me throughout my life the
-                  relationships we have formed and the influence we have had
-                  together."
-                </p>
-              </blockquote>
-            </div>
+                  <p>
+                    "Being a member of the Lasallian Club has changed the way I
+                    understand service. My experience working closely with those
+                    in need in the community has taught me to be grateful and
+                    empathetic. I will carry with me throughout my life the
+                    relationships we have formed and the influence we have had
+                    together."
+                  </p>
+                </blockquote>
+              </div>
 
-            <div class="testimonial-slide" role="group" aria-label="Testimonial 3 of 3">
-              <blockquote class="testimonial-content">
-                <div class="testimonial-header">
-                  <div class="testimonial-avatar">
-                    <img src="images/elder-at-sedeqia.jpg" alt="Yusuf Kemal" loading="lazy" />
-                    <div class="testimonial-icon" aria-hidden="true">
-                      <i class="fas fa-quote-left"></i>
+              <div
+                class="testimonial-slide"
+                role="group"
+                aria-label="Testimonial 3 of 3"
+              >
+                <blockquote class="testimonial-content">
+                  <div class="testimonial-header">
+                    <div class="testimonial-avatar">
+                      <img
+                        src="images/elder-at-sedeqia.jpg"
+                        alt="Yusuf Kemal"
+                        loading="lazy"
+                      />
+                      <div class="testimonial-icon" aria-hidden="true">
+                        <i class="fas fa-quote-left"></i>
+                      </div>
+                    </div>
+                    <div class="testimonial-info">
+                      <h4>Yusuf Kemal</h4>
+                      <p>Elder Resident, Sedeqia</p>
                     </div>
                   </div>
-                  <div class="testimonial-info">
-                    <h4>Yusuf Kemal</h4>
-                    <p>Elder Resident, Sedeqia</p>
-                  </div>
-                </div>
-                <p>
-                  "Our lives are made brighter by the young St.&nbsp;Joseph
-                  students. They listen to our stories, attend to our
-                  needs, and remind us that we are not forgotten. Their frequent
-                  visits give me something to look forward to. They are like
-                  grandchildren to me."
-                </p>
-              </blockquote>
-            </div>
-          </div>
-
-          <div class="slider-controls">
-            <button class="prev-btn" id="prev-btn" aria-label="Previous testimonial">
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>
-            </button>
-            <div class="slider-dots" role="tablist" aria-label="Testimonial navigation">
-              <button class="dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Testimonial 1"
-                tabindex="0"></button>
-              <button class="dot" data-slide="1" role="tab" aria-selected="false" aria-label="Testimonial 2"
-                tabindex="-1"></button>
-              <button class="dot" data-slide="2" role="tab" aria-selected="false" aria-label="Testimonial 3"
-                tabindex="-1"></button>
-            </div>
-            <button class="next-btn" id="next-btn" aria-label="Next testimonial">
-              <i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---- JOIN & GET INVOLVED ---- -->
-    <section id="join" class="join" aria-labelledby="join-heading">
-      <div class="container">
-        <header class="section-header animate-element fade-in">
-          <h2 id="join-heading">Join &amp; Get Involved</h2>
-          <p>
-            There are many ways you can support our mission and make a
-            difference in the lives of those in need. Every contribution
-            matters!
-          </p>
-        </header>
-
-        <div class="involvement-options">
-          <div class="involvement-card animate-element flip-in" data-delay="0">
-            <i class="fas fa-user-plus" aria-hidden="true"></i>
-            <h3>Become a Member</h3>
-            <p>
-              Join our club and participate directly in our initiatives and
-              decision-making. Your ideas and energy help shape our future
-              projects.
-            </p>
-            <a href="#contact" class="btn btn-secondary">Join Now</a>
-          </div>
-
-          <div class="involvement-card animate-element flip-in" data-delay="200" id="donate">
-            <i class="fas fa-hand-holding-heart" aria-hidden="true"></i>
-            <h3>Make a Donation</h3>
-            <p>
-              Your financial gift enables us to provide vital support to those
-              in need. Even small contributions can have a big impact on our
-              community programs.
-            </p>
-            <a href="#contact" class="btn btn-secondary">Donate</a>
-          </div>
-
-          <div class="involvement-card animate-element flip-in" data-delay="400">
-            <i class="fas fa-hands-helping" aria-hidden="true"></i>
-            <h3>Volunteer</h3>
-            <p>
-              Offer your time and skills to help with our various activities
-              and events. Volunteering is a rewarding way to connect with the
-              community and create positive change.
-            </p>
-            <a href="#contact" class="btn btn-secondary">Volunteer</a>
-          </div>
-
-          <div class="involvement-card animate-element flip-in" data-delay="600">
-            <i class="fas fa-building" aria-hidden="true"></i>
-            <h3>Corporate Partnerships</h3>
-            <p>
-              Partner with us as an organization to support our initiatives
-              and make a bigger impact. Corporate sponsorships help us expand
-              our reach and sustainability.
-            </p>
-            <a href="#contact" class="btn btn-secondary">Partner With Us</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---- CONTACT ---- -->
-    <section id="contact" class="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <header class="section-header animate-element fade-in">
-          <h2 id="contact-heading">Contact Us</h2>
-          <p>
-            Want to know more about our club or explore potential
-            collaborations? We'd love to hear from you.
-          </p>
-        </header>
-
-        <div class="contact-content">
-          <address class="contact-info animate-element slide-in-left">
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-              <div>
-                <h3>Location</h3>
-                <p>St. Joseph Catholic School</p>
-                <p>Adama, Ethiopia</p>
+                  <p>
+                    "Our lives are made brighter by the young St.&nbsp;Joseph
+                    students. They listen to our stories, attend to our needs,
+                    and remind us that we are not forgotten. Their frequent
+                    visits give me something to look forward to. They are like
+                    grandchildren to me."
+                  </p>
+                </blockquote>
               </div>
             </div>
 
-            <div class="contact-item">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-              <div>
-                <h3>Email</h3>
-                <p>
-                  <a href="mailto:senjolasallians@stjosephadama.edu">
-                    senjolasallians@stjosephadama.edu
+            <div class="slider-controls">
+              <button
+                class="prev-btn"
+                id="prev-btn"
+                aria-label="Previous testimonial"
+              >
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+              </button>
+              <div
+                class="slider-dots"
+                role="tablist"
+                aria-label="Testimonial navigation"
+              >
+                <button
+                  class="dot active"
+                  data-slide="0"
+                  role="tab"
+                  aria-selected="true"
+                  aria-label="Testimonial 1"
+                  tabindex="0"
+                ></button>
+                <button
+                  class="dot"
+                  data-slide="1"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Testimonial 2"
+                  tabindex="-1"
+                ></button>
+                <button
+                  class="dot"
+                  data-slide="2"
+                  role="tab"
+                  aria-selected="false"
+                  aria-label="Testimonial 3"
+                  tabindex="-1"
+                ></button>
+              </div>
+              <button
+                class="next-btn"
+                id="next-btn"
+                aria-label="Next testimonial"
+              >
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- JOIN & GET INVOLVED ---- -->
+      <section id="join" class="join" aria-labelledby="join-heading">
+        <div class="container">
+          <header class="section-header animate-element fade-in">
+            <h2 id="join-heading">Join &amp; Get Involved</h2>
+            <p>
+              There are many ways you can support our mission and make a
+              difference in the lives of those in need. Every contribution
+              matters!
+            </p>
+          </header>
+
+          <div class="involvement-options">
+            <div
+              class="involvement-card animate-element flip-in"
+              data-delay="0"
+            >
+              <i class="fas fa-user-plus" aria-hidden="true"></i>
+              <h3>Become a Member</h3>
+              <p>
+                Join our club and participate directly in our initiatives and
+                decision-making. Your ideas and energy help shape our future
+                projects.
+              </p>
+              <a href="#contact" class="btn btn-secondary">Join Now</a>
+            </div>
+
+            <div
+              class="involvement-card animate-element flip-in"
+              data-delay="200"
+              id="donate"
+            >
+              <i class="fas fa-hand-holding-heart" aria-hidden="true"></i>
+              <h3>Make a Donation</h3>
+              <p>
+                Your financial gift enables us to provide vital support to those
+                in need. Even small contributions can have a big impact on our
+                community programs.
+              </p>
+              <a href="#contact" class="btn btn-secondary">Donate</a>
+            </div>
+
+            <div
+              class="involvement-card animate-element flip-in"
+              data-delay="400"
+            >
+              <i class="fas fa-hands-helping" aria-hidden="true"></i>
+              <h3>Volunteer</h3>
+              <p>
+                Offer your time and skills to help with our various activities
+                and events. Volunteering is a rewarding way to connect with the
+                community and create positive change.
+              </p>
+              <a href="#contact" class="btn btn-secondary">Volunteer</a>
+            </div>
+
+            <div
+              class="involvement-card animate-element flip-in"
+              data-delay="600"
+            >
+              <i class="fas fa-building" aria-hidden="true"></i>
+              <h3>Corporate Partnerships</h3>
+              <p>
+                Partner with us as an organization to support our initiatives
+                and make a bigger impact. Corporate sponsorships help us expand
+                our reach and sustainability.
+              </p>
+              <a href="#contact" class="btn btn-secondary">Partner With Us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- CONTACT ---- -->
+      <section id="contact" class="contact" aria-labelledby="contact-heading">
+        <div class="container">
+          <header class="section-header animate-element fade-in">
+            <h2 id="contact-heading">Contact Us</h2>
+            <p>
+              Want to know more about our club or explore potential
+              collaborations? We'd love to hear from you.
+            </p>
+          </header>
+
+          <div class="contact-content">
+            <address class="contact-info animate-element slide-in-left">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <div>
+                  <h3>Location</h3>
+                  <p>St. Joseph Catholic School</p>
+                  <p>Adama, Ethiopia</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p>
+                    <a href="mailto:senjolasallians@stjosephadama.edu">
+                      senjolasallians@stjosephadama.edu
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i class="fas fa-phone" aria-hidden="true"></i>
+                <div>
+                  <h3>Phone</h3>
+                  <p><a href="tel:+251123456789">+251 123 456 789</a></p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i class="fas fa-clock" aria-hidden="true"></i>
+                <div>
+                  <h3>Club Meetings</h3>
+                  <p>Every Friday, 3:30 PM – 5:00 PM</p>
+                  <p>School Library</p>
+                </div>
+              </div>
+
+              <div class="social-media">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                  <a
+                    href="#"
+                    class="social-icon"
+                    aria-label="Follow us on Facebook"
+                  >
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
                   </a>
-                </p>
+                  <a
+                    href="#"
+                    class="social-icon"
+                    aria-label="Follow us on Instagram"
+                  >
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="social-icon"
+                    aria-label="Follow us on Twitter"
+                  >
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="social-icon"
+                    aria-label="Watch us on YouTube"
+                  >
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                  </a>
+                </div>
               </div>
+            </address>
+
+            <div class="contact-form animate-element slide-in-right">
+              <h3>Send Us a Message</h3>
+              <form id="contactForm" novalidate>
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    autocomplete="name"
+                    aria-required="true"
+                    aria-describedby="name-error"
+                  />
+                  <div
+                    class="error-message"
+                    id="name-error"
+                    role="alert"
+                    aria-live="polite"
+                  ></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    autocomplete="email"
+                    aria-required="true"
+                    aria-describedby="email-error"
+                  />
+                  <div
+                    class="error-message"
+                    id="email-error"
+                    role="alert"
+                    aria-live="polite"
+                  ></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    aria-required="true"
+                    aria-describedby="subject-error"
+                  />
+                  <div
+                    class="error-message"
+                    id="subject-error"
+                    role="alert"
+                    aria-live="polite"
+                  ></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    aria-required="true"
+                    aria-describedby="message-error"
+                  ></textarea>
+                  <div
+                    class="error-message"
+                    id="message-error"
+                    role="alert"
+                    aria-live="polite"
+                  ></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo animate-element fade-in">
+            <img
+              src="assets/logo.png"
+              alt="Lasallian Club logo"
+              loading="lazy"
+            />
+            <div class="footer-logo-text">
+              <h3>Lasallian Club</h3>
+              <p>St. Joseph Catholic School – Adama</p>
+            </div>
+          </div>
+
+          <nav class="footer-links" aria-label="Footer navigation">
+            <div
+              class="footer-links-column animate-element slide-up"
+              data-delay="0"
+            >
+              <h4>Quick Links</h4>
+              <ul role="list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#impact">Our Impact</a></li>
+                <li><a href="#join">Get Involved</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
             </div>
 
-            <div class="contact-item">
-              <i class="fas fa-phone" aria-hidden="true"></i>
-              <div>
-                <h3>Phone</h3>
-                <p><a href="tel:+251123456789">+251 123 456 789</a></p>
-              </div>
+            <div
+              class="footer-links-column animate-element slide-up"
+              data-delay="200"
+            >
+              <h4>Resources</h4>
+              <ul role="list">
+                <li><a href="#">School Website</a></li>
+                <li><a href="#">Lasallian Network</a></li>
+                <li><a href="#">Annual Report</a></li>
+                <li><a href="#">Photo Gallery</a></li>
+                <li><a href="#">Newsletter</a></li>
+              </ul>
             </div>
+          </nav>
 
-            <div class="contact-item">
-              <i class="fas fa-clock" aria-hidden="true"></i>
-              <div>
-                <h3>Club Meetings</h3>
-                <p>Every Friday, 3:30 PM – 5:00 PM</p>
-                <p>School Library</p>
-              </div>
-            </div>
-
-            <div class="social-media">
-              <h3>Follow Us</h3>
-              <div class="social-icons">
-                <a href="#" class="social-icon" aria-label="Follow us on Facebook">
-                  <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="Follow us on Instagram">
-                  <i class="fab fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="Follow us on Twitter">
-                  <i class="fab fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#" class="social-icon" aria-label="Watch us on YouTube">
-                  <i class="fab fa-youtube" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-          </address>
-
-          <div class="contact-form animate-element slide-in-right">
-            <h3>Send Us a Message</h3>
-            <form id="contactForm" novalidate>
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required autocomplete="name" aria-required="true"
-                  aria-describedby="name-error" />
-                <div class="error-message" id="name-error" role="alert" aria-live="polite"></div>
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required autocomplete="email" aria-required="true"
-                  aria-describedby="email-error" />
-                <div class="error-message" id="email-error" role="alert" aria-live="polite"></div>
-              </div>
-
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" required aria-required="true"
-                  aria-describedby="subject-error" />
-                <div class="error-message" id="subject-error" role="alert" aria-live="polite"></div>
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required aria-required="true"
-                  aria-describedby="message-error"></textarea>
-                <div class="error-message" id="message-error" role="alert" aria-live="polite"></div>
-              </div>
-
-              <button type="submit" class="btn btn-primary">Send Message</button>
+          <div
+            class="footer-newsletter animate-element slide-up"
+            data-delay="400"
+          >
+            <h4>Stay in the Loop</h4>
+            <p>Get updates on our latest activities and upcoming events.</p>
+            <form id="newsletterForm" novalidate>
+              <label for="newsletter-email" class="sr-only"
+                >Email address</label
+              >
+              <input
+                type="email"
+                id="newsletter-email"
+                placeholder="Your email address"
+                required
+                aria-required="true"
+                autocomplete="email"
+              />
+              <button type="submit" class="btn btn-primary">Subscribe</button>
             </form>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <!-- ======== FOOTER ======== -->
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo animate-element fade-in">
-          <img src="assets/logo.png" alt="Lasallian Club logo" loading="lazy" />
-          <div class="footer-logo-text">
-            <h3>Lasallian Club</h3>
-            <p>St. Joseph Catholic School – Adama</p>
-          </div>
-        </div>
-
-        <nav class="footer-links" aria-label="Footer navigation">
-          <div class="footer-links-column animate-element slide-up" data-delay="0">
-            <h4>Quick Links</h4>
-            <ul role="list">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#activities">Activities</a></li>
-              <li><a href="#impact">Our Impact</a></li>
-              <li><a href="#join">Get Involved</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-links-column animate-element slide-up" data-delay="200">
-            <h4>Resources</h4>
-            <ul role="list">
-              <li><a href="#">School Website</a></li>
-              <li><a href="#">Lasallian Network</a></li>
-              <li><a href="#">Annual Report</a></li>
-              <li><a href="#">Photo Gallery</a></li>
-              <li><a href="#">Newsletter</a></li>
-            </ul>
-          </div>
-        </nav>
-
-        <div class="footer-newsletter animate-element slide-up" data-delay="400">
-          <h4>Stay in the Loop</h4>
-          <p>Get updates on our latest activities and upcoming events.</p>
-          <form id="newsletterForm" novalidate>
-            <label for="newsletter-email" class="sr-only">Email address</label>
-            <input type="email" id="newsletter-email" placeholder="Your email address" required aria-required="true"
-              autocomplete="email" />
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </form>
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="currentYear"></span> Lasallian Club at
+            St.&nbsp;Joseph Catholic School – Adama. All rights reserved.
+          </p>
+          <p class="footer-motto"><em>"Enter to Learn, Leave to Serve"</em></p>
         </div>
       </div>
+    </footer>
 
-      <div class="footer-bottom">
-        <p>
-          &copy; <span id="currentYear"></span> Lasallian Club at St.&nbsp;Joseph
-          Catholic School – Adama. All rights reserved.
-        </p>
-        <p class="footer-motto"><em>"Enter to Learn, Leave to Serve"</em></p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JavaScript -->
-  <script src="scripts/main.js" defer></script>
-</body>
-
+    <!-- JavaScript -->
+    <script src="scripts/main.js" defer></script>
+  </body>
 </html>
