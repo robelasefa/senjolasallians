@@ -124,7 +124,13 @@
   --dur-carousel: 700ms;
 
   /* Header */
-  --header-h: 72px;
+  --header-h: 100px;
+
+  --scroll-offset: 300px;
+}
+
+#donate {
+  scroll-margin-top: var(--scroll-offset);
 }
 
 /* ── 2. RESET & BASE ────────────────────────────────────────── */

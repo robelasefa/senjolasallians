@@ -129,7 +129,7 @@ function initHeroCarousel() {
 
   let current = 0;
   let timer = null;
-  const DELAY = 5000;
+  const DELAY = 3000;
   const DURATION = 700; // matches CSS --dur-carousel
   let transitioning = false;
 
