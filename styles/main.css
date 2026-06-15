@@ -1,6 +1,6 @@
 /* ============================================================
    SENJO LASALLIANS – Main Stylesheet
-   Stack: HTML / CSS / Vanilla JS  |  No frameworks
+   Stack: HTML / CSS / Vanilla JS
    ============================================================ */
 
 /* ── 1. DESIGN TOKENS ──────────────────────────────────────── */
@@ -51,8 +51,8 @@
   --color-error: #dc2626;
 
   /* Typography */
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 
   --text-xs: 0.75rem;
   /* 12px */
@@ -368,15 +368,11 @@ p {
   right: 0;
   z-index: 1000;
   height: var(--header-h);
+  background: transparent;
   transition:
     background var(--dur-slow) var(--ease-out),
     box-shadow var(--dur-slow) var(--ease-out),
     backdrop-filter var(--dur-slow) var(--ease-out);
-}
-
-/* Transparent on hero */
-#header {
-  background: transparent;
 }
 
 /* Scrolled state — added by JS */
@@ -509,6 +505,12 @@ p {
   flex-shrink: 0;
 }
 
+/* Donate link shown inside the mobile nav drawer (hidden on desktop,
+   where .header-cta already provides the Donate Now button) */
+.nav-cta {
+  display: none;
+}
+
 /* Mobile toggle */
 .mobile-menu-btn {
   display: none;
@@ -583,9 +585,6 @@ p {
 
 .carousel-slide.active {
   opacity: 1;
-}
-.carousel-slide.fade-out {
-  opacity: 0;
 }
 
 .carousel-slide img {
@@ -1529,20 +1528,6 @@ footer {
   margin-top: 2px;
 }
 
-.footer-brand-desc {
-  font-size: var(--text-sm);
-  line-height: var(--leading-relaxed);
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 28ch;
-}
-
-/* Social icons in footer brand */
-.footer-social {
-  display: flex;
-  gap: var(--space-3);
-  margin-top: var(--space-2);
-}
-
 .footer-col-heading {
   font-family: var(--font-display);
   font-size: var(--text-sm);
@@ -1812,18 +1797,11 @@ footer {
     display: none;
   }
 
-  /* Mobile CTA inside nav */
-  #nav-menu::after {
-    content: "Donate Now";
-    display: block;
+  /* Donate CTA inside nav drawer */
+  .nav-cta {
+    display: flex;
+    width: 100%;
     margin-top: var(--space-6);
-    padding: 0.75rem 1.75rem;
-    background: var(--color-brand-primary);
-    color: var(--white);
-    text-align: center;
-    border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: var(--text-sm);
   }
 
   /* Hero */
@@ -1900,9 +1878,6 @@ footer {
   }
   .footer-top {
     grid-template-columns: 1fr;
-  }
-  .footer-brand-desc {
-    max-width: none;
   }
 }
 

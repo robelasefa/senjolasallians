@@ -1,7 +1,5 @@
 /**
  * Senjo Lasallians – Main JavaScript
- * Auto-advancing carousel · Pill indicators · Nav scroll ·
- * Mobile menu · Typed text · Testimonials · Counters · Forms
  */
 
 "use strict";
@@ -141,7 +139,7 @@ function closeMobileMenu() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   3.  HERO CAROUSEL — auto-advance every 5s with fade + pill
+   3.  HERO CAROUSEL
    ═══════════════════════════════════════════════════════════════ */
 function initHeroCarousel() {
   const slides = qsa(".carousel-slide");
