@@ -1073,55 +1073,65 @@
     <!-- ======== FOOTER ======== -->
     <footer role="contentinfo">
       <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo animate-element fade-in">
-            <img
-              src="assets/logo.png"
-              alt="Lasallian Club logo"
-              loading="lazy"
-            />
-            <div class="footer-logo-text">
-              <h3>Lasallian Club</h3>
-              <p>St. Joseph Catholic School – Adama</p>
+        <div class="footer-top">
+          <!-- Brand Column -->
+          <div class="footer-brand animate-element fade-in">
+            <div class="footer-logo-wrap">
+              <img
+                src="assets/logo.png"
+                alt="Lasallian Club logo"
+                loading="lazy"
+                width="56"
+                height="56"
+              />
+              <div>
+                <h3 class="footer-brand-name">Lasallian Club</h3>
+                <p class="footer-brand-school">
+                  St. Joseph Catholic School – Adama
+                </p>
+              </div>
             </div>
           </div>
 
-          <nav class="footer-links" aria-label="Footer navigation">
-            <div
-              class="footer-links-column animate-element slide-up"
-              data-delay="0"
-            >
-              <h4>Quick Links</h4>
-              <ul role="list">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#activities">Activities</a></li>
-                <li><a href="#impact">Our Impact</a></li>
-                <li><a href="#join">Get Involved</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </div>
-
-            <div
-              class="footer-links-column animate-element slide-up"
-              data-delay="200"
-            >
-              <h4>Resources</h4>
-              <ul role="list">
-                <li><a href="#">School Website</a></li>
-                <li><a href="#">Lasallian Network</a></li>
-                <li><a href="#">Annual Report</a></li>
-                <li><a href="#">Photo Gallery</a></li>
-                <li><a href="#">Newsletter</a></li>
-              </ul>
-            </div>
+          <!-- Quick Links -->
+          <nav
+            class="footer-col animate-element slide-up"
+            data-delay="100"
+            aria-label="Footer quick links"
+          >
+            <h4 class="footer-col-heading">Quick Links</h4>
+            <ul role="list">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#activities">Activities</a></li>
+              <li><a href="#impact">Our Impact</a></li>
+              <li><a href="#join">Get Involved</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
           </nav>
 
-          <div
-            class="footer-newsletter animate-element slide-up"
-            data-delay="400"
+          <!-- Resources -->
+          <nav
+            class="footer-col animate-element slide-up"
+            data-delay="200"
+            aria-label="Footer resources"
           >
-            <h4>Stay in the Loop</h4>
+            <h4 class="footer-col-heading">Resources</h4>
+            <ul role="list">
+              <li><a href="#">School Website</a></li>
+              <li><a href="#">Lasallian Network</a></li>
+              <li><a href="#">Annual Report</a></li>
+              <li><a href="#">Photo Gallery</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </nav>
+
+          <!-- Newsletter -->
+          <div
+            class="footer-col footer-newsletter animate-element slide-up"
+            data-delay="300"
+          >
+            <h4 class="footer-col-heading">Stay in the Loop</h4>
             <p>Get updates on our latest activities and upcoming events.</p>
             <form id="newsletterForm" novalidate>
               <label for="newsletter-email" class="sr-only"
@@ -1141,7 +1151,7 @@
         </div>
 
         <div class="footer-bottom">
-          <p>
+          <p class="footer-copy">
             &copy; <span id="currentYear"></span> Lasallian Club at
             St.&nbsp;Joseph Catholic School – Adama. All rights reserved.
           </p>
